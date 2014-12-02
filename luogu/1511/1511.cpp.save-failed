@@ -1,0 +1,37 @@
+#include <cstdio>
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+char str[210];
+char s[200000];
+int idx = 0;
+
+void insert(int i) {
+	char temp[7];
+	memset(temp, 0, sizeof(temp));
+	while (i) {
+		temp[strlen(temp)] = ('0' + i % 10);
+		i /= 10;
+	}
+	int l = strlen(temp);
+	for (int j = 0; j < l; j++) {
+		s[idx++] = temp[l - j - 1];
+	}
+}
+
+int main() {
+	freopen("15
+11.in", "r", stdin);
+	scanf("%s", str);
+	memset(s, 0, sizeof(s));
+	for (int i = 1; i <= 40000; i++) {
+		insert(i);
+	}
+	printf("%s\n", s);
+
+	return 0;
+}

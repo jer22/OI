@@ -1,0 +1,8 @@
+2 
+41 1 96 288 
+95 1 37 1776 
+
+//printf("%d %d %d %d\n", va.size(), vb.size(),vc.size(),vd.size());
+/*for (int j = 0; j < vc.size(); j++) {
+	printf("%d %d %d %d\n", vc[j].num, vc[j].power, vd[j].num, vd[j].power);
+}*/
