@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #define MAXN 1010
+#define INF 0x3f3f3f3f
 
 using namespace std;
 
@@ -32,9 +33,9 @@ int main( void ) {
 	}
 	for (int j = 1; j < n; j++) {
 		for (int i = 0; i < n; i++) {
-			dp[i][j] = 0;
+			dp[i][j] = INF;
 			for (int k = 0; k < j; k++) {
-				dp[i][j] = max(dp[i][j],
+				dp[i][j] = min(dp[i][j],
 					dp[i][k] + dp[(i + k + 1) % n][j - k - 1] + summary(i, j));
 			}
 		}
@@ -43,6 +44,6 @@ int main( void ) {
 	for (int i = 0; i < n; i++) {
 		maxval = max(maxval, dp[i][n - 1]);
 	}
-	printf("%d", maxval);
+	printf("%d", dp[0][n - 1]);
 	return 0;
 }
