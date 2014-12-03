@@ -117,5 +117,6 @@ int main( void ) {
 		addEdge(x, y, l);
 	}
 	printf("%d\n", dinic(1, V));
+	
 	return 0;
 }
