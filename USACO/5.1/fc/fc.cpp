@@ -16,23 +16,23 @@ struct Point {
 };
 
 double dist(Point a, Point b) {
-	return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+	return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
 }
 
-double multi(Point a, Point b, Point c) {
+double multi(Point a, Point b, Point o) {
 	// ab X ac
-	return (c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x);
+	return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
 }
 
 int n;
-Point p[100];
+Point p[10010];
 int cmp(Point a, Point b) {
-	double t = multi(p[0], a, b);
+	double t = multi(a, b, p[0]);
 	if (fabs(t) < 1e-8) return dist(p[0], a) < dist(p[0], b);
 	return t > 0;
 }
 
-Point stack[100];
+Point stack[10010];
 int top = 0;
 void grahamScan() {
 	int t = 0;
@@ -43,15 +43,15 @@ void grahamScan() {
 	swap(p[0], p[t]);
 	sort(p + 1, p + n, cmp);
 
-	stack[top++] = p[0];
-	stack[top++] = p[1];
-	stack[top++] = p[2];
+	stack[0] = p[0];
+	stack[1] = p[1];
+	stack[2] = p[2];
+	top = 2;
 	for (int i = 3; i < n; i++) {
-		while (top && multi(stack[top - 2], stack[top - 1], p[i]) <= 0) {
+		while (top && multi(p[i], stack[top], stack[top - 1]) >= 0) {
 			top--;
 		} 
-		stack[top] = p[i];
-		top++;
+		stack[++top] = p[i];
 	}
 }
 
@@ -64,18 +64,13 @@ int main() {
 	}
 	grahamScan();
 
-	// for (int i=0;i<top;i++)
-	// 	cout<<stack[i].x<<' '<<stack[i].y<<endl;
 
-	Point s = stack[--top];
+	stack[top + 1] = stack[0];
 	//4 5 6 7       top=3
 	double ans = 0;
-	while (top) {
-		top--;
-		ans += sqrt(dist(stack[top], stack[top + 1]));
+	for (int i = 0; i <= top; i++) {
+		ans += dist(stack[i], stack[i + 1]);
 	}
-	
-	ans += sqrt(dist(s, stack[0]));
 	printf("%.2lf\n", ans);
 	return 0;
 }
