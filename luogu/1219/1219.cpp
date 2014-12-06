@@ -44,8 +44,8 @@ bool canPut(int x, int y) {
 void dfs(int x) {
 	if (x == n + 1) {
 		cnt++;
-		if (cnt <= 3)
-			print();
+		// if (cnt <= 3)
+			// print();
 		return;
 	}
 	for (int i = 1; i <= n; i++) {

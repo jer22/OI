@@ -3,52 +3,47 @@
 #include <algorithm>
 #include <stack>
 #include <cmath>
+#include <map>
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-struct Node{
-	int left, right;
-};
+int n, m;
+int x1, y, x2, y2;
+int arr[11];
+int cnt = 0;
+int vis[11];
 
-int n, T;
-Node arr[200];
-
-void pre(int i) {
-	if (!i) return;
-	printf("%d ", i);
-	pre(arr[i].left);
-	pre(arr[i].right);
+void print() {
+	for (int i = 0; i < cnt; i++) {
+		if (i) printf(" ");
+		printf("%d", arr[i]);
+	}
+	printf("\n");
 }
 
-void in(int i) {
-	if (!i) return;
-	in(arr[i].left);
-	printf("%d ", i);
-	in(arr[i].right);
-}
-
-void post(int i) {
-	if (!i) return;
-	post(arr[i].left);
-	post(arr[i].right);
-	printf("%d ", i);
+void dfs(int step) {
+	if (step == n + 1) {
+		print();
+		return;
+	}
+	for (int i = 1; i <= n; i++) {
+		if (!vis[i]) {
+			vis[i] = 1;
+			arr[cnt++] = i;
+			dfs(step + 1);
+			arr[--cnt] = 0;
+			vis[i] = 0;
+		}
+	}
 }
 
 int main() {
 	freopen("temp.in", "r", stdin);
+	freopen("temp.out", "w", stdout);
 	cin >> n;
-	int a, b;
-	for (int i = 1; i <= n; i++) {
-		scanf("%d %d", &a, &b);
-		arr[i].left = a;
-		arr[i].right = b;
-	}
-	pre(1);
-	cout << endl;
-	in(1);
-	cout << endl;
-	post(1);
+	dfs(1);
 	return 0;
 }
