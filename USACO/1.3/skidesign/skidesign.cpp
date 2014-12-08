@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:skidesign
 LANG:C++
 */
+
+/*
+因为高度限制在1到100所以枚举每一个高度差i，i+17，然后计算费用。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

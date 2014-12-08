@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:dualpal
 LANG:C++
 */
+
+/*
+从s+1向上枚举，再枚举每一个进制。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

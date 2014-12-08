@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:pprime
 LANG:C++
 */
+
+/*
+水题。先找出所有的回文数在判断是不是质数。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

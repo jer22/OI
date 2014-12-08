@@ -3,6 +3,15 @@ ID:shijiey1
 PROG:wormhole
 LANG:C++
 */
+
+/*
+先用dfs枚举每一种配对，在判断是否有环。
+next：每个点右边的第一个点是谁。如果右边没有点则为自己
+pair:与每个点配对的点
+如何判断有环：
+对于每一种配对，枚举每一个第一次进入的点，然后递归处理，下一次递归的点是当前点配对的点的右边的点.
+如果一个点进入了两次，则说明有环。如果某个点配对的点的next就是它配对的点则说明无环。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

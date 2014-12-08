@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:castle
 LANG:C++
 */
+
+/*
+先给房间染色，第一问和第二问就解决了。
+然后枚举每一面相邻的房间是不同颜色的墙，再统计最大值。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

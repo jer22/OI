@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:holstein
 LANG:C++
 */
+
+/*
+枚举每一个饲料的选择方案，选出符合条件的，然后挑出最小的方案。
+我用了一个二进制数来表示选的方案。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:sprime
 LANG:C++
 */
+
+/*
+dfs水题。先枚举个位，再枚举十位，依次类推。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

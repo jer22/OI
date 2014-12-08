@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:milk3
 LANG:C++
 */
+
+/*
+dfs水题
+用三维的vis数组记录当前状态是否枚举过。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

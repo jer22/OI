@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:frac1
 LANG:C++
 */
+/*
+因为n最大只有160所以枚举。
+枚举每一个分子和分母，如果互质则记录，最后排序。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

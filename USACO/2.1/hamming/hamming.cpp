@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:hamming
 LANG:C++
 */
+
+/*
+数据范围很小所以dfs。
+每次从当前的最大数+1向上枚举，与之前的所有数字比较，如果可以则记录。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

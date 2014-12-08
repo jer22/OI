@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:ride
 LANG:C++
 */
+
+/*
+此题是入门基础题，从头扫到尾即可
+边乘边模，这样即使数据很大也不会超时
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

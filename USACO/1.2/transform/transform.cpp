@@ -7,6 +7,9 @@ LANG:C++
 #include <cstring>
 #include <algorithm>
 
+/*
+傻逼模拟题，每次算出变换后的数组再比对。
+*/
 using namespace std;
 
 int n;

@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:milk
 LANG:C++
 */
+
+/*
+贪心水题，按单价排序，能买就买
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:gift1
 LANG:C++
 */
+
+/*
+用map存每个人收到多少钱
+不能给出的钱算自己的收入。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

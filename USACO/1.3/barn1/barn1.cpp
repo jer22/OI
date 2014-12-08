@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:barn1
 LANG:C++
 */
+
+/*
+总长度最小即总间隙最大。
+选取最大的m-1段间隙，其余部分用木板盖住。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

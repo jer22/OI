@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:palsquare
 LANG:C++
 */
+
+/*
+数据范围300很小，从1到300扫一遍，如果是回文数就输出。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

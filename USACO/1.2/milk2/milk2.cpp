@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:milk2
 LANG:C++
 */
+
+/*
+按时刻排序，如果是开始则该点的stat记为+1,结束则记为-1。
+从左到右扫一遍，每次cur+=现在时刻的stat。如果cur从0变为1,说明进入了有人挤奶段，如果cur从1变为0,说明进入了无人挤奶段。然后再统计最大值。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:ariprog
 LANG:C++
 */
+
+/*
+先算出每一个双平方数放在arr里，还需要一个数组done来记录每一个整数是不是双平方数。
+然后先枚举等差数列的首项，再枚举第二项，计算出公差，在算出之后的n-2项。
+如果都是双平方数则记录答案。
+这里用了一个剪枝，对于每一个枚举的首项，在枚举第二项时，先计算末项，如果大于了最大的双平方数则直接break，枚举下一个首项。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

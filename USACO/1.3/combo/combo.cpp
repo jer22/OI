@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:combo
 LANG:C++
 */
+
+/*
+数据范围超小，所以枚举枚举枚举。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

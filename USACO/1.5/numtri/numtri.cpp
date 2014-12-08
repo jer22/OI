@@ -3,6 +3,12 @@ ID:shijiey1
 PROG:numtri
 LANG:C++
 */
+
+/*
+dp入门题。
+就是数塔问题。
+dp[i][j] = max(dp[i + 1][j] + arr[i][j], dp[i + 1][j + 1] + arr[i][j]);
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

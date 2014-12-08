@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:crypt1
 LANG:C++
 */
+
+/*
+从111到999和从11到99分别枚举第一个数和第二个数，然后算出剩下的3个数，再判断是否在集合内。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

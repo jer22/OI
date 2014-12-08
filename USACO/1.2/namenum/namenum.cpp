@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:namenum
 LANG:C++
 */
+
+/*
+扫一遍dict，在扫每一位。
+不过如果当前扫到的名字的长度和输入数字的长度不同就可以跳过了
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

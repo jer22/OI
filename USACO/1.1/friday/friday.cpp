@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:friday
 LANG:C++
 */
+/*
+1900年1月13号是星期六。然后每次加上这个月的天数再模7就行了。
+注意判断闰年。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
