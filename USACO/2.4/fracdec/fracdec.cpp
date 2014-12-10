@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:fracdec
 LANG:C++
 */
+
+/*
+这道题有三个特点：恶心。
+当然如果有点耐心的话还是挺水的，就是模拟模拟模拟。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

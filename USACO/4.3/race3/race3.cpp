@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:race3
 LANG:C++
 */
+
+/*
+第一问n-2次spfa，枚举每一个不可避免的路口k，spfa时遇到k时continue，如果从起点无法走到终点则k为不可避免的路口。
+第二问，显然中间路口一定是一个不可避免路口，所以先枚举每一个不可避免路口k，以k为起点spfa，如果从比k编号小的节点回到了k，则k一定不是中间路口。否则k一定是中间路口。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,25 @@ ID:shijiey1
 PROG:lamps
 LANG:C++
 */
+
+/*
+首先可以发现，灯i和灯i+6是一样的，所以对于所有的n，都可以看作是n=6的情况，输出时反复输出即可（n<6也可以）。
+一开始给出最后灯的开关情况，把编号模6存起来。如果一个位置既是开的又是关的，就可以直接输出IMPOSSIBLE。
+每个灯按两次等于不按，所以其实只有按与不按两种状态，所以当c＞４就可以一直-2直到c<=4。
+所以每个灯按与不安一共2^4=16种情况。
+用一个6位的二进制数表示灯的状态，从右向左数第1位表示第1盏灯，依次类推。所以4种操作分别是：
+操作1：异或63
+操作2：异或21
+操作3：异或42
+操作4：异或9
+用一个二进制数isOn表示最后是开着的灯，如果灯"开着"则对应位是1，其余是0。
+同样用二进制数isOff表示最后是关着的灯，灯"关着"则对应位是0，其余是1。
+当前状态用state表示。
+若(state & isOn) == isOn && (state | isOff) == isOff则满足要求。
+还有如果细心可以发现，对于操作1，2，3，12=3，13=2，23=1。所以其实16种状态可以简化为8种：
+0（不按），1，2，3，4，14，24，34。
+然后枚举即可。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -61,18 +80,10 @@ void solve() {
 		addState(bit ^ 63);
 		addState(bit ^ 21);
 		addState(bit ^ 42);
-		if (c == 1) {
-			addState(bit ^ 9);	
-		} else if (c == 2) {
-			addState((bit ^ 63) ^ 9);
-			addState((bit ^ 21) ^ 9);
-			addState((bit ^ 42) ^ 9);
-		} else {
-			addState(bit ^ 9);
-			addState((bit ^ 63) ^ 9);
-			addState((bit ^ 21) ^ 9);
-			addState((bit ^ 42) ^ 9);
-		}
+		addState(bit ^ 9);	
+		addState((bit ^ 63) ^ 9);
+		addState((bit ^ 21) ^ 9);
+		addState((bit ^ 42) ^ 9);
 	}
 	if (!ans.size()) {
 		printf("IMPOSSIBLE\n");

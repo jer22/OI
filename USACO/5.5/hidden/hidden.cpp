@@ -3,6 +3,12 @@ ID:shijiey1
 PROG:hidden
 LANG:C++
 */
+
+/*
+后缀数组。
+将字符串扩展成两倍，在末尾接上一个极大值（因为我用0~25表示字母，所以最后接上了一个26），然后计算后缀数组。
+从前向后扫一遍后缀数组，遇到sa[i]<len(S)就直接输出sa[i]（S是原字符串，不是扩展后的字符串）。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

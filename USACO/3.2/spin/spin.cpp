@@ -3,6 +3,11 @@ ID:shijiey1
 PROB:spin
 LANG:C++
 */
+
+/*
+因为每个轮子转360次一定会回到原位，所以360秒之后还没有结果就说明无解。
+每次转动之后枚举0到359的每一个位置如果符合则输出。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

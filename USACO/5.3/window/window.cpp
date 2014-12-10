@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:window
 LANG:C++
 */
+
+/*
+矩形切割。
+执行非查询操作时更新高度，创建窗体和置顶时时height[i]=top++，置底height[i]=bot--，删除窗体时vis[i]=false。
+执行查询操作时dfs，每次用比窗口i高一层的窗体把i切割成最多4个矩形，然后递归。
+这种方法叫上浮法，对于当前dfs的窗口i，想象它向上浮，遇上了第一个比它高的矩形，被它切成了最多4个矩形，然后4个小矩型再继续上浮，直到露出水面时剩下了许多很小的矩形，它们的面积之和就是窗口i的能看见的面积。
+途中遇到vis[j]=false的矩形直接跳过。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:fc
 LANG:C++
 */
+
+/*
+裸的凸包。
+graham-scan水过。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

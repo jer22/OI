@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:comehome
 LANG:C++
 */
+
+/*
+裸的最短路所以spfaspfaspfa。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,9 @@ ID:shijiey1
 PROG:preface
 LANG:C++
 */
+
+/*找规律吧。
+I和V之跟个位有关，X和L之跟十位有关，依次类推。*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

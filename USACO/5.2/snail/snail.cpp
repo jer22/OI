@@ -3,6 +3,10 @@ ID:shijiey1
 LANG:C++
 PROG:snail
 */
+
+/*
+水题。n<=120所以记忆搜记忆搜记忆搜。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

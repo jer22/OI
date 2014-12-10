@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:fence
 LANG:C++
 */
+
+/*
+欧拉路。
+如果有节点的度数为奇数，则以它作为起点，否则以编号最小的点做起点（注意题目没说节点是从1开始标号的）
+dfs然后倒序输出。
+至于为什么倒序才能保证字典序其实我也不知道。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -19,17 +26,10 @@ int n = 0;
 int ans[1050];
 void dfs(int s) {
 	for (int i = 1; i <= 500; i++) {
-		/*while (edges[s][i] >= 2) {
-			edges[s][i] -= 2;
-			edges[i][s] -= 2;
-			ans[n++] = i;
-			ans[n++] = s;
-		}*/
 		if (edges[s][i]) {
 			edges[s][i]--;
 			edges[i][s]--;
 			dfs(i);
-			
 		}
 	}
 	ans[n++] = s;

@@ -3,6 +3,13 @@ ID:shijiey1
 LANG:C++
 PROG:telecow
 */
+
+/*
+先拆点，每个点i拆成i和i+n，连一条边，容量为1。
+对于原图中相连的两个点i和j，i+n到j，j+n到i各连一条容量为INF的边。
+第一问最小割，跑一遍dinic。
+第二问最小点割集，枚举每一个点i将其删去（将i与i+n之间的边的容量设为0），再跑一遍dinic，如果流量flow'等于原流量flow-1,则该点一定在最小割集中，flow-=1，继续枚举。如果flow'!=flow-1,将该点恢复（将i与i+n之间的边的容量设为1）。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

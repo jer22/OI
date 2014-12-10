@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:humble
 LANG:C++
 */
+
+/*
+已经知道前k个丑数，如何得到第k+1个丑数？
+对于每个质数p，找到最小的丑数h，使得h*p比上一个丑数大，所有的h*p中最小的就是下一个丑数。
+但这样会很慢，所以需要一个pindex数组记录每个质数乘到了哪一个丑数。
+//其实就是官方题解
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

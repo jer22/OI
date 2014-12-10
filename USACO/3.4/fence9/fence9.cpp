@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:fence9
 LANG:C++
 */
+
+/*
+皮克定理
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

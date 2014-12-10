@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:contact
 LANG:C++
 */
+
+/*
+略水。
+枚举长度l从a到b，找出字符串中所有长度为l的字串然后用map记录，排序输出。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

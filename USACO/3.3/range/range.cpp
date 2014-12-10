@@ -3,6 +3,12 @@ ID:shijiey1
 PROG:range
 LANG:C++
 */
+
+/*
+dp[i][j]：以点(i,j)为右下角能取到的最大正方形的边长
+若arr[i][j]==0,则dp[i][j]=0
+否则dp[i][j]=min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

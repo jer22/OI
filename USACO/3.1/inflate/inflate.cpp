@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:inflate
 LANG:C++
 */
+
+/*
+裸的完全背包完全背包完全背包。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

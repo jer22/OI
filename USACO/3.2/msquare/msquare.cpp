@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:msquare
 LANG:C++
 */
+
+/*
+标准的宽搜，应该没什么难度吧。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

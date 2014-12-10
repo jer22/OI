@@ -3,6 +3,16 @@ ID:shijiey1
 PROG:cowtour
 LANG:C++
 */
+
+/*
+注意题目中的直径并不是指距离最远的两点的距离，而是最短路最长两点的最短路。
+用map[i][j]表示两点之间的最短路。
+读入时初始化map，如果两点之间有边则map[i][j]=dist(i, j)否则map[i][j]=INF.
+然后用一次floyd算出任意两点最短路。
+mmax[i]表示从节点i出发，能到达的最远的节点的路程。
+对于每一个不联通的i，j，将他俩接通，此时直径为mmax[i]+mmax[j]+dist(i,j).
+枚举每一个不联通的i，j，计算直径统计最大值。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

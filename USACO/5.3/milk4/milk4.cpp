@@ -3,6 +3,11 @@ TASK:milk4
 ID:shijiey1
 LANG:C++
 */
+
+/*
+用dfsid枚举每一种取法，然后用完全背包判断是否符合题意。
+不会超时。
+*/
 #include <cstdio>
 #include <iostream>
 #include <cstring>
@@ -27,13 +32,10 @@ int cnt = 0;
 bool ok(int cnt) {
 	dp[0] = cnt;
 	for (int i = 1; i <= t; i++) {
-		// cout << arr[choose[i - 1]] << endl;
 		for (int j = arr[choose[i - 1]]; j <= m; j++) {
 			if (dp[j - arr[choose[i - 1]]] == cnt)
 				dp[j] = cnt;
-			// cout << dp[i][j] << ' ';
 		}
-		// cout << endl;
 	}
 	return dp[m] == cnt;
 }
@@ -49,25 +51,17 @@ void print() {
 bool flag = false;
 void dfs(int depth, int i) {
 	if (flag) return;
-	// cout << depth << endl;
 	if (!depth) {
 		cnt++;
-		// cout << cnt << endl;
 		if (ok(cnt)) {
 			print();
 			flag = true;
 		}
 		return;
 	}
-	if (depth > n - i + 1) {
-		 return;
-	}
 	if (i > n) return;
-	// cout << depth << endl;
 	for (int j = i; j <= n; j++) 
-	if (t != 0 && (arr[j] % arr[choose[t - 1]]) || !t)
-	{
-		// cout << depth << endl;
+	if (t != 0 && (arr[j] % arr[choose[t - 1]]) || !t) {
 		choose[t++] = j;
 		dfs(depth - 1, j + 1);
 		choose[--t] = 0;

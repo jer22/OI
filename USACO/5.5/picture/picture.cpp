@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:picture
 LANG:C++
 */
+
+/*
+先处理所有的横线，竖线同理。
+横边记录一个pos值，每个矩形有两条横边，下面的pos记为1，上面的pos记为-1。
+将所有横边按y坐标由小到大排好序，然后枚举，横坐标上的每个点记录一个值layer。每遇到一条边i，对于边i上的每一个点x，layer[x]+=i.pos。
+如果layer[j]从0变为1，周长ans++，如果layer从1变为0，同样ans++。
+注意矩形的顶点只能算一次，在横边算过了竖边就不算了。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

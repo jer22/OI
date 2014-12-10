@@ -3,6 +3,14 @@ ID:shijiey1
 LANG:C++
 PROG:theme
 */
+
+/*
+dp[i][j]表示第一个串匹配到了i，第二个串匹配到了j的最长公共部分的长度。
+只不过这题不能直接匹配，要计算后一个和前一个的差值再匹配。
+dp[i][j]=max(dp[i][j],dp[i-1][j-1]) (arr[i]-arr[j]==arr[i-1]-arr[j-1])
+因为不能有重复部分，所以当i-dp[i-1][j-1]-1>j时才进行dp。
+用滚动数组实现。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:butter
 LANG:C++
 */
+
+/*
+枚举每一个集合点，n次spfa。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

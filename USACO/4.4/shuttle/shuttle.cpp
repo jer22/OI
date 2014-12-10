@@ -3,6 +3,16 @@ ID:shijiey1
 PROG:shuttle
 LANG:C++
 */
+
+/*
+找规律。
+4 35 642 1357 642 35 4 (n=3)
+
+5 46 753 2468 97531 2468 753 46 5 (n=4)
+其实就是n*2+1组等差数列。
+先求出1到n+1组，然后根据对称性求出剩下的。
+可以观察到：奇数组为降序，偶数组为升序；奇数组首项为n+i，偶数组首项为n-i+2。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

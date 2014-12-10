@@ -3,6 +3,12 @@ ID:shijiey1
 PROG:stamps
 LANG:C++
 */
+
+/*
+dp[i]表示要得到i元钱需要几张邮票。
+初始状态：dp[0]=0
+然后递推，对于每一个dp[i]<5枚举每一张邮票的价值w，dp[i+w]=dp[i]+1.
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

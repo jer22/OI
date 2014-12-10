@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:ttwo
 LANG:C++
 */
+
+/*
+如果初始时两人四周都有墙则直接输出0。
+然后开始恶心的模拟。如果两人都回到了出发点则输出0。
+还有就是如果两人都走了很多步就认为无法相遇输出0。
+否则如果途中相遇了就输出。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:rockers
 LANG:C++
 */
+
+/*
+dp[i][j][k]:考虑了前i首歌，装进了j张cd，最后一张cd用了k分钟能装下的最多的歌曲的数目。
+初始状态：dp[1][1][0]=0，dp[1][1][arr[1]=1(arr[1]<=t)
+转移(顺推)：dp[i + 1][j][k] = max(dp[i][j][k], dp[i + 1][j][k]) (不装第下一张cd)
+dp[i + 1][j + 1][arr[i + 1]] = max(dp[i][j][k] + 1, dp[i + 1][j + 1][arr[i + 1]]) (arr[i+1]<=t) (将下一张cd装进一张新唱片)
+dp[i + 1][j][arr[i + 1] + k] = max(dp[i][j][k] + 1, dp[i + 1][j][arr[i + 1] + k]) (arr[i+1]+k<=t) (将下一张唱片装进当前唱片)
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -43,8 +51,6 @@ int main() {
 		for (int j = 1; j <= m; j++) {
 			ans = max(ans, dp[n][j][i]);
 		}
-		
-		// printf("%d\n", dp[n][m][i]);
 	}
 	printf("%d\n", ans);
 	return 0;

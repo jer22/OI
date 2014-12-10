@@ -3,6 +3,10 @@ ID:shijiey1
 LANG:C++
 PROG:charrec
 */
+
+/*
+
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

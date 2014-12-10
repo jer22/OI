@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:tour
 LANG:C++
 */
+
+/*
+可以看做从起点出发走两条线到终点。
+dp[i][j]表示第一条线走到i,第二条线走到j的最多经过的城市数。
+枚举max(i,j)之后的每一个城市k，下一步可以i走到k也可以j走到k。
+dp[i][k] = max(dp[i][k], dp[i][j] + 1)
+dp[k][j] = max(dp[k][j], dp[i][j] + 1)
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -49,12 +57,9 @@ int main() {
 	for (int i = 1; i < n; i++) {
 		for (int j = 1; j < n; j++) {
 			if (arr[i][n] && arr[j][n]) {
-				// cout << i << ' ' << j << ' ' << dp[i][j] << endl;
 				ans = max(ans, dp[i][j] + 1);
 			}
-			// cout << dp[i][j] << "   ";
 		}
-		// cout << endl;
 	}
 	cout << ans << endl;
 	return 0;

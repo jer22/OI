@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:lgame
 LANG:C++
 */
+
+/*
+第一步先从字典里筛选出所有符合条件的串。
+看似数据很大其实第一步筛出来已经没剩几个了，枚举就行。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

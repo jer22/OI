@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:runround
 LANG:C++
 */
+
+/*
+枚举比m高的数。先判断是否合法，再判断是不是循环数。用vis数组判重，没什么技术含量。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

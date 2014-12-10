@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:zerosum
 LANG:C++
 */
+
+/*
+数据很小所以dfsdfsdfs.
+dfs三个参数pos：dfs到了第几位
+sum：当前的表达式的结果
+pre：前一个数。如果这次不填空格则下一次的pre就是下一次的pos，否则为pre*10+pos+1
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

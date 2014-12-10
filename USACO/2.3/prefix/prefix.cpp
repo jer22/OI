@@ -3,6 +3,13 @@ ID:shijiey1
 PROG:prefix
 LANG:C++
 */
+
+/*
+用dp[i]表示第i位是否可行。
+初始状态：dp[0]=1;
+则如果dp[i]==1,则枚举每一个在集合p中的字符串p[j]，dp[i+strlen(p[j])]=1。
+然后从右向左扫，遇到第一个可行的点输出。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -26,7 +33,6 @@ int main() {
 	while (~scanf("%s", t)) {
 		strcpy(s + 1 + strlen(s + 1), t);
 	}
-	// printf("%s\n", s + 1);
 	dp[0] = 1;
 	int len = strlen(s + 1);
 	for (int i = 1; i <= len; i++) {
@@ -38,17 +44,11 @@ int main() {
 					if (p[j][k] != s[i + l])
 						break;
 				}
-
 				if (k == lp) {
 					dp[i + lp - 1] = 1;
 				}
-
 			}
 		}
-		// for (int j = 1; j <= strlen(s + 1); j++) {
-		// 	printf("%d ", dp[j]);
-		// }
-		// printf("\n");
 	}
 	for (int j = strlen(s + 1); j >= 0; j--) {
 		if (dp[j]) {

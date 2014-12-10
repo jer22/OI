@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:concom
 LANG:C++
 */
+
+/*
+用con[i][j]表示j是否受i控制。
+先把所有的con[i][i]设为1
+读入时把i直接拥有j50以上股份的情况con[i][j]设为1
+然后枚举每一对con[i][j]==0，然后枚举i控制的所有的公司con[i][k]==1,如果k拥有的j的股份之和超过50则con[i][j]=1。
+注意输入没有保证公司编号一定是1到N。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm> 

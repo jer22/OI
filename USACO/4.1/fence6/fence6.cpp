@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:fence6
 LANG:C++
 */
+
+/*
+将篱笆看作点，两段连接的篱笆之间连边，权值为两篱笆长度之和。
+floyd最小环，然后结果除以2就是答案。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

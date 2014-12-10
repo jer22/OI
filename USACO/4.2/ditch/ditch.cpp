@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:ditch
 LANG:C++
 */
+
+/*
+裸的最小割，跑一遍最大流。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,14 @@ ID:shijiey1
 LANG:C++
 PROG:bigbrn
 */
+
+/*
+超水的dp题
+arr[i][j]记录是否有树，1表示有0表示无
+dp[i][j]表示以点(i,j)为右下角的最大0正方形的边长。
+若arr[i][j]==0,dp[i][j]=0
+否则dp[i][j]=min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

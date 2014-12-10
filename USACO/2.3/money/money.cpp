@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:money
 LANG:C++
 */
+
+/*
+完全背包，裸得不能再裸。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:shopping
 LANG:C++
 */
+
+/*
+因为n<=5,k<=5,所以用一个5维数组表示dp[wa][wb][wc][wd][we]表示买了wa个a商品，wb个b商品……的最小花费。
+然后就记忆搜吧，没什么技术含量。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -12,10 +17,12 @@ LANG:C++
 using namespace std;
 
 int s, b, m;
+// shop[i][0]表示第i种优惠的价格，shop[i][1],shop[i][2],shop[i][3],shop[i][4],shop[i][5]表示第i种优惠5种商品的个数
+// 把商品的原价同样算作优惠放到shop数组里。
 int shop[105][6];
 int buy[6];
 int cc[1005];
-int ans[6][6][6][6][6];
+int dp[6][6][6][6][6];
 
 int min(int a, int b) {
 	if (a == -1) return b;
@@ -46,13 +53,13 @@ void scan() {
 		buy[cc[c]] = k;
 	}
 	m = s + b;
-	memset(ans, -1, sizeof(ans));
-	ans[0][0][0][0][0] = 0;
+	memset(dp, -1, sizeof(dp));
+	dp[0][0][0][0][0] = 0;
 }
 
 int dfs(int wa, int wb, int wc, int wd, int we) {
-	if (ans[wa][wb][wc][wd][we] != -1)
-		return ans[wa][wb][wc][wd][we];
+	if (dp[wa][wb][wc][wd][we] != -1)
+		return dp[wa][wb][wc][wd][we];
 	int re = INF;
 	int na, nb, nc, nd, ne;
 	for (int i = 1; i <= m; i++) {
@@ -62,8 +69,8 @@ int dfs(int wa, int wb, int wc, int wd, int we) {
 		nd = wd - shop[i][4];
 		ne = we - shop[i][5];
 		if (na < 0 || nb < 0 || nc < 0 || nd < 0 || ne < 0) continue;
-		ans[na][nb][nc][nd][ne] = dfs(na, nb, nc, nd, ne);
-		re = min(re, ans[na][nb][nc][nd][ne] + shop[i][0]);
+		dp[na][nb][nc][nd][ne] = dfs(na, nb, nc, nd, ne);
+		re = min(re, dp[na][nb][nc][nd][ne] + shop[i][0]);
 	}
 	return re;
 }

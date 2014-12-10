@@ -3,6 +3,12 @@ ID:shijiey1
 PROG:ratios
 LANG:C++
 */
+
+/*
+其实就是求一个最简配比a,b,c,t使a(x1,y1,z1)+b(x2,y2,z2)+c(x3,y3,z3)=t(k1,k2,k3)
+用行列式求出a，b，c，t。如果t=0或abct不同号则说明无解。
+否则分别除以gcd输出就行了。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

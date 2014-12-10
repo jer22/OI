@@ -3,6 +3,10 @@ ID:shijiey1
 PROG:agrinet
 LANG:C++
 */
+
+/*
+裸的最小生成树
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

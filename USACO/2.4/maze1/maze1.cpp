@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:maze1
 LANG:C++
 */
+
+/*
+先找到两个出口，然后两次dfs找到每个出口到所有地方的步数。
+对于每一个空格，走出迷宫的步数为它分别走到两个出口的步数的最小值，然后再统计其中的最大值。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

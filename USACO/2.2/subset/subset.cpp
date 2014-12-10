@@ -3,6 +3,11 @@ ID:shijiey1
 PROG:subset
 LANG:C++
 */
+
+/*
+01背包水题。
+如果集合中数字之和是奇数则直接输出0，否则就按背包的思路做。统计正好花费sum/2时的方案数。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

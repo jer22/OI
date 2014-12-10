@@ -3,6 +3,14 @@ ID:shijiey1
 PROG:buylow
 LANG:C++
 */
+
+/*
+第一问最长下降子序列，len[i]表示以i结尾最长下降子序列的长度。
+第二问求最长下降子序列的个数。cnt[i]为以i结尾最长下降子序列的个数。
+对于所有的位置i枚举每一个j(1<=j<=i-1)且arr[j]>arr[i],若len[j]+1>len[i],cnt[j]=cnt[i],否则若len[j]+1==len[i],cnt[j]+=cnt[i]。
+因为题目要求不重复，所以记录一个next数组，next[i]表示i右边第一个与i相同的数的位置，不存在则next[i]=0，dp时若next[j]!=0且next[j]<i就跳过。
+只有最后一组数据要用高精。
+*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
