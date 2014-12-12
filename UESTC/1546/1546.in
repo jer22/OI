@@ -1,0 +1,12 @@
+1
+6
+((()))
+8
+query 0 5
+set 0 5 (
+query 0 5
+reverse 3 5
+query 0 5
+query 1 4
+query 2 3
+query 0 4
