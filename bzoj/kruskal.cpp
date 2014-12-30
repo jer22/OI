@@ -25,9 +25,6 @@ void addEdge(int u, int v, int value) {
 	e.to = v;
 	e.value = value;
 	edges[t++] = e;
-	// e.from = v;
-	// e.to = u;
-	// edges[t++] = e;
 }
 
 int V, E;
