@@ -1,7 +1,4 @@
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -30,7 +27,5 @@ int main() {
 		memset(vis, 0, sizeof(vis));
 		dfs(1);
 	}
-
-
 	return 0;
 }
