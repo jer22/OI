@@ -3,15 +3,14 @@
 ###1094 Sorting It All Out floyd 或 拓扑
 ###1112* Team Them Up! 2分图染色+DP
 ###1125 Stockbroker Grapevine FLOYD
-1149* PIGS 网络流
-1201 Intervals 差分约束
-1236* Network of Schools 强联通
-1251 Jungle Roads MST
-1273 Drainage Ditches 最大流
-1274 The Perfect Stall 2分匹配
-1275* Cashier Employment 差分约束
-1325 Machine Schedule 2分匹配(最小点覆盖)
-1364 King 差分约束
+###1149* PIGS 网络流
+###1201 Intervals 差分约束
+###1236* Network of Schools 强联通
+###1251 Jungle Roads MST
+###1274 The Perfect Stall 2分匹配
+###1275* Cashier Employment 差分约束
+###1325 Machine Schedule 2分匹配(最小点覆盖)
+###1364 King 差分约束
 1422 Air Raid 2分匹配
 1459 Power Network 网络流
 1466 Girls and Boys 2分图(最大独立团)
