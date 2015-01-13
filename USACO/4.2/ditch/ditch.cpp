@@ -12,6 +12,7 @@ LANG:C++
 #include <algorithm>
 #include <vector>
 #include <queue>
+#include <iostream>
 
 #define MAXV 205
 #define INF 0x3f3f3f3f
@@ -95,7 +96,7 @@ int dinic() {
 
 int main() {
 	freopen("ditch.in", "r", stdin);
-	freopen("ditch.out", "w", stdout);
+	// freopen("ditch.out", "w", stdout);
 	scanf("%d %d", &E, &V);
 	int a, b, c;
 	for (int i = 0; i < E; i++) {
