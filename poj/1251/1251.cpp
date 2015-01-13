@@ -32,7 +32,6 @@ void addEdge(int a, int b, int c) {
 }
 
 int main() {
-	freopen("1251.in", "r", stdin);
 	while (~scanf("%d", &n) && n) {
 		char x, t;
 		int c, a;

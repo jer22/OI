@@ -1,13 +1,3 @@
-/*
-ID:shijiey1
-PROG:stall4
-LANG:C++
-*/
-
-/*
-二分图匹配，匈牙利算法即可。
-数据范围不大最大流也能过。
-*/
 #include <cstdio>
 #include <cstring>
 #include <algorithm>

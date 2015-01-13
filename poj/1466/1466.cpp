@@ -6,9 +6,11 @@
 
 using namespace std;
 
-int n, m, k;
-vector<int> edges[105];
-int mat[105], vis[105];
+int n;
+vector<int> edges[505];
+int mat[505];
+bool vis[505];
+
 bool dfs(int k) {
 	for (int i = 0; i < edges[k].size(); i++) {
 		int j = edges[k][i];
@@ -33,19 +35,24 @@ int match() {
 }
 
 int main() {
-	while (~scanf("%d", &n) && n) {
-		scanf("%d %d", &m, &k);
-		memset(mat, 0, sizeof(mat));
-		for (int i = 0; i <= n; i++)
+	freopen("1466.in", "r", stdin);
+	while (~scanf("%d", &n)) {
+		int a, b, k;
+		char ch;
+		for (int i = 0; i < n; i++)
 			edges[i].clear();
-		int a, b, c;
-		for (int i = 0; i < k; i++) {
-			scanf("%d %d %d", &a, &b, &c);
-			if (!(b * c)) continue;
-			edges[b].push_back(c);
+		for (int i = 0; i < n; i++) {
+			cin >> a >> ch >> ch >> k >> ch;
+			for (int i = 0; i < k; i++) {
+				scanf("%d", &b);
+				edges[a].push_back(b);
+			}
 		}
-		int ans = match();
+		memset(mat, 0, sizeof(mat));
+		int ans = n - match() / 2;
 		printf("%d\n", ans);
 	}
+
+
 	return 0;
 }

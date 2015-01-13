@@ -1,14 +1,16 @@
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
-int n, m, k;
-vector<int> edges[105];
-int mat[105], vis[105];
+int T;
+int n, m;
+vector<int> edges[125];
+int vis[125];
+int mat[125];
 bool dfs(int k) {
 	for (int i = 0; i < edges[k].size(); i++) {
 		int j = edges[k][i];
@@ -25,7 +27,7 @@ bool dfs(int k) {
 
 int match() {
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		memset(vis, 0, sizeof(vis));
 		if (dfs(i)) ans++;
 	}
@@ -33,19 +35,21 @@ int match() {
 }
 
 int main() {
-	while (~scanf("%d", &n) && n) {
-		scanf("%d %d", &m, &k);
-		memset(mat, 0, sizeof(mat));
+	freopen("1422.in", "r", stdin);
+	scanf("%d", &T);
+	while (T--) {
+		scanf("%d %d", &n, &m);
+		int a, b;
 		for (int i = 0; i <= n; i++)
 			edges[i].clear();
-		int a, b, c;
-		for (int i = 0; i < k; i++) {
-			scanf("%d %d %d", &a, &b, &c);
-			if (!(b * c)) continue;
-			edges[b].push_back(c);
+		for (int i = 0; i < m; i++) {
+			scanf("%d %d", &a, &b);
+			edges[a].push_back(b);
 		}
+		memset(mat, 0, sizeof(mat));
 		int ans = match();
-		printf("%d\n", ans);
+		printf("%d\n", n - ans);
 	}
+
 	return 0;
 }

@@ -6,9 +6,12 @@
 
 using namespace std;
 
-int n, m, k;
+int T;
+int n, m;
 vector<int> edges[105];
-int mat[105], vis[105];
+int mat[305];
+int vis[305];
+
 bool dfs(int k) {
 	for (int i = 0; i < edges[k].size(); i++) {
 		int j = edges[k][i];
@@ -25,7 +28,7 @@ bool dfs(int k) {
 
 int match() {
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		memset(vis, 0, sizeof(vis));
 		if (dfs(i)) ans++;
 	}
@@ -33,19 +36,24 @@ int match() {
 }
 
 int main() {
-	while (~scanf("%d", &n) && n) {
-		scanf("%d %d", &m, &k);
-		memset(mat, 0, sizeof(mat));
-		for (int i = 0; i <= n; i++)
+	freopen("1469.in", "r", stdin);
+	scanf("%d", &T);
+	while (T--) {
+		scanf("%d %d", &n, &m);
+		int k, a;
+		for (int i = 1; i <= n; i++)
 			edges[i].clear();
-		int a, b, c;
-		for (int i = 0; i < k; i++) {
-			scanf("%d %d %d", &a, &b, &c);
-			if (!(b * c)) continue;
-			edges[b].push_back(c);
+		for (int i = 1; i <= n; i++) {
+			scanf("%d", &k);
+			for (int j = 1; j <= k; j++) {
+				scanf("%d", &a);
+				edges[i].push_back(a);
+			}
 		}
+		memset(mat, 0, sizeof(mat));
 		int ans = match();
-		printf("%d\n", ans);
+		if (ans == n) printf("YES\n");
+		else printf("NO\n");
 	}
 	return 0;
 }

@@ -70,7 +70,6 @@ bool spfa() {
 }
 
 int main() {
-	freopen("1275.in", "r", stdin);
 	scanf("%d", &T);
 	while (T--) {
 		for (int i = 1; i <= 24; i++)
@@ -90,7 +89,7 @@ int main() {
 			}
 		}
 		if (ans == -1) printf("No Solution\n");
-		else cout << ans << endl;
+		else printf("%d\n", ans);
 	}
 	return 0;
 }
