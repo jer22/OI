@@ -47,7 +47,6 @@ int spfa(int t) {
 }
 
 int main() {
-	freopen("1716.in", "r", stdin);
 	while (~scanf("%d", &n)) {
 		int a, b;
 		int s = 0, t = 0;
@@ -65,6 +64,5 @@ int main() {
 		int ans = spfa(t);
 		printf("%d\n", ans);
 	}
-
 	return 0;
 }

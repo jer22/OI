@@ -76,7 +76,6 @@ int spfaAstar() {
 }
 
 int main() {
-	freopen("1724.in", "r", stdin);
 	while (~scanf("%d %d %d", &k, &n, &m)) {
 		int a, b, c, d;
 		for (int i = 0; i <= n; i++) {
@@ -90,7 +89,7 @@ int main() {
 		}
 		spfa();
 		int ans = spfaAstar();
-		cout << ans << endl;
+		printf("%d\n", ans);
 	}
 	return 0;
 }
