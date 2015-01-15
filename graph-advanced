@@ -1,4 +1,4 @@
-POJ 1639 - Picnic Planning(较难) AC
+###POJ 1639 - Picnic Planning(较难) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=1639
 题意：顶点度数有限制的最小生成树
 解法：贪心 + prim/kruskal
