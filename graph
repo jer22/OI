@@ -21,12 +21,12 @@
 ###1716 Integer Intervals 差分约束
 ###1724* ROADS 最短路-拆点
 1780* Code 欧拉回路
-1789 Truck History 最小生成树
-1797 Heavy Transportation 最小生成树
-1847 Tram 最短路
-1904* King's Quest 强联通
-1949 Chores 最短路
-2060 Taxi Cab Scheme 2分匹配
+###1789 Truck History 最小生成树
+###1797 Heavy Transportation 最小生成树
+###1847 Tram 最短路
+###1904* King's Quest 强联通
+###1949 Chores 最短路
+###2060 Taxi Cab Scheme 2分匹配
 2075 Tangled in Cables 最小生成树
 2112 Optimal Milking 网络流
 2125 Destroying The Graph 最小割
