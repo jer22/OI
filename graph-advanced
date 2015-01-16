@@ -8,15 +8,15 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=3164
 题意：最小树形图
 解法：刘朱算法，这个考到的可能性比较小吧？
 
-POJ 2553 - The Bottom of a Graph(基础)  AC  （好题）
+###POJ 2553 - The Bottom of a Graph(基础)  AC  （好题）
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2553
 出度为0的强连通分量的所有的点
 
-POJ 2186 - Popular Cows(基础)  AC  （好题）
+###POJ 2186 - Popular Cows(基础)  AC  （好题）
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2186
 题意：强连通分量缩点图出度为0的点
 
-POJ 2762 - Going from u to v or from v to u?(中等) AC
+###POJ 2762 - Going from u to v or from v to u?(中等) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2762
 题意：单向连通图判定
 解法：缩点 + dp找最长链 (我是用 缩点+ 欧拉路判断，最后证明这方法是错的)
