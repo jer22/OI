@@ -3,7 +3,7 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=1639
 题意：顶点度数有限制的最小生成树
 解法：贪心 + prim/kruskal
 
-POJ 3164 - Command Network(难) AC
+###POJ 3164 - Command Network(难) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3164
 题意：最小树形图
 解法：刘朱算法，这个考到的可能性比较小吧？
