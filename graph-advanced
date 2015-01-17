@@ -33,11 +33,11 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=2749
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3207
 解法：简单的2-sat，不过其他方法更快
 
-POJ 3905 Perfect Election(中等) (第八道) AC
+###POJ 3905 Perfect Election(中等) (第八道) AC
 http://poj.org/problem?id=3905（好题！）
 解法: 建好矛盾，直接就是2-SAT
 
-POJ 2391 - Ombrophobic Bovines(中等) AC  （好题）
+###POJ 2391 - Ombrophobic Bovines(中等) AC  （好题）
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2391
 题意：floyd, 拆点，二分枚举
 相关：http://hi.baidu.com/zfy0701/blog/item/3e0006c4f73f0eaf8226acff.html
