@@ -42,51 +42,47 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=2391
 题意：floyd, 拆点，二分枚举
 相关：http://hi.baidu.com/zfy0701/blog/item/3e0006c4f73f0eaf8226acff.html
 
-POJ 2455 - Secret Milking Machine(基础) AC   （好题）
+###POJ 2455 - Secret Milking Machine(基础) AC   （好题）
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2455
 二分枚举，一般来说需要写对边容量的更新操作而不是每次全部重新构图
 
 
-POJ 2987 - Firing(较难)  AC  （经典）
+###POJ 2987 - Firing(较难)  AC  （经典）
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2987
 题意：最大权闭包
 解法：先边权放大，第一问总量-最大流，第二问求最小割
 
-RQNOJ 最大获利Profit(中等) AC  （经典）
-http://www.rqnoj.cn/Problem_556.html
+###bzoj1497 最大获利Profit(中等) AC  （经典）
+http://www.lydsy.com/JudgeOnline/problem.php?id=1497
 最大权闭包图的特殊情况
-
-SGU 326 - Perspective(中等)
-http://acm.sgu.ru/problem.php?c0&problem=326
-比较经典的构图法
 
 POJ 2175 - Evacuation Plan(中等)
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2175
 题意：判断是否给定解是最优解，比较阴的一题
 解法：根据给出的计划构造流，然后消且只消一次负圈
 
-POJ 3422 - Kaka's Matrix Travels(中等)
+###POJ 3422 - Kaka's Matrix Travels(中等)
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3422
 题意：略
 解法：拆点
 
-SPOJ 371 - Boxes(简单)
+###SPOJ 371 - Boxes(简单)
 http://www.spoj.pl/problems/BOXES/
 题意：略
 解法：费用流，但似乎有比网络流更好的做法
 
-POJ 1486 - Sorting Slides(中等) AC
+###POJ 1486 - Sorting Slides(中等) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=1486
 题意：二分图的必须边
-解法：需正真理解最大匹配算法，详见http://hi.baidu.com/kevin0602/blog/item/1d5be63b5bec9bec14cecb44.html
+解法：需正真理解最大匹配算法
 
-POJ 2060 -Taxi Cab Scheme(基础) AC
+###(@see ./graph)POJ 2060 -Taxi Cab Scheme(基础) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2060
 题意：最小路径覆盖
 
-POJ 3041 - Asteroids(基础) AC
+###POJ 3041 - Asteroids(基础) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3041
-解法: 简单行列匹配 
+解法: 简单行列匹配
 
 POJ 2195 - Going Home(基础) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2195

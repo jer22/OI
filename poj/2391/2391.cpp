@@ -12,9 +12,9 @@ using namespace std;
 const long long INF = 1e16;
 
 struct Edge{
-	int from, to, cap, flow;
+	int from, to, cap;
 	Edge() {}
-	Edge(int a, int b, int c, int d) : from(a), to(b), cap(c), flow(d) {}
+	Edge(int a, int b, int c) : from(a), to(b), cap(c) {}
 };
 
 int n, m;
@@ -33,8 +33,8 @@ void floyd() {
 }
 
 void addEdge(int from, int to, int cap) {
-	edges.push_back(Edge(from, to, cap, 0));
-	edges.push_back(Edge(to, from, 0, 0));
+	edges.push_back(Edge(from, to, cap));
+	edges.push_back(Edge(to, from, 0));
 	int siz = edges.size();
 	G[from].push_back(siz - 2);
 	G[to].push_back(siz - 1);
@@ -52,7 +52,7 @@ bool build() {
 		q.pop();
 		for (int i = 0; i < G[current].size(); i++) {
 			Edge e = edges[G[current][i]];
-			if (layer[e.to] == -1 && e.cap > e.flow) {
+			if (layer[e.to] == -1 && e.cap > 0) {
 				layer[e.to] = layer[current] + 1;
 				q.push(e.to);
 			}
@@ -67,9 +67,9 @@ int find(int x, int curFlow) {
 	for (int &i = cur[x]; i < G[x].size(); i++) {
 		Edge &e = edges[G[x][i]];
 		if (layer[e.to] == layer[x] + 1
-			&& (f = find(e.to, min(curFlow, e.cap - e.flow)))) {
-			e.flow += f;
-			edges[G[x][i] ^ 1].flow -= f;
+			&& (f = find(e.to, min(curFlow, e.cap)))) {
+			e.cap -= f;
+			edges[G[x][i] ^ 1].cap += f;
 			flow += f;
 			curFlow -= f;
 			if (!curFlow) break;

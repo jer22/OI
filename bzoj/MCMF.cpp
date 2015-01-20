@@ -65,7 +65,7 @@ bool spfa(int s, int t, int& flow, int& cost) {
 	cost += dist[t] * a[t];
 	for (int u = t; u != s; u = edges[previous[u]].from) {
 		edges[previous[u]].flow += a[t];
-		edges[previous[u] + 1].flow -= a[t];
+		edges[previous[u] ^ 1].flow -= a[t];
 	}
 	return true;
 }
