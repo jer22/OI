@@ -39,7 +39,6 @@ void tarjan(int u) {
 }
 
 int main() {
-	freopen("1904.in", "r", stdin);
 	while (~scanf("%d", &n)) {
 		int k, a;
 		for (int i = 0; i <= n; i++) {

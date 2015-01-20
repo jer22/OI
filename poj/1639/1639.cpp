@@ -23,12 +23,12 @@ struct Edge{
 int n, m, k;
 int cnt;
 int ans;
-int parent[MAXN];
+int parent[MAXN]; // 并查集
 map<string, int> nodes;
 vector<Edge> edges;
 Edge dp[MAXN];
 int g[MAXN][MAXN];
-bool tree[MAXN][MAXN];
+bool tree[MAXN][MAXN]; // tree[i][j]=true表示<i, j>这条边在最小生成树中
 int minEdge[MAXN];
 
 int find(int p) {
@@ -45,7 +45,7 @@ void kruskal() {
 	for (int i = 0; i < edges.size(); i++) {
 		int p = edges[i].u;
 		int q = edges[i].v;
-		if (p == 1 || q == 1) continue;
+		if (p == 1 || q == 1) continue; // 忽略根节点
 		if (find(p) != find(q)) {
 			un(p, q);
 			tree[p][q] = tree[q][p] = 1;
@@ -73,7 +73,9 @@ void solve() {
 	int keyPoint[MAXN];
 	for (int i = 2; i <= cnt; i++) {
 		if (g[1][i] != INF) {
+			// 点i在哪颗最小生成树中
 			int color = find(i);
+			// 每颗最小生成树中距离根节点最近的点与根节点的距离
 			if (minEdge[color] > g[1][i]) {
 				minEdge[color] = g[1][i];
 				keyPoint[color] = i;
@@ -87,12 +89,13 @@ void solve() {
 			ans += g[1][keyPoint[i]];
 		}
 	}
+	// 由i-1度生成树得i度生成树
 	for (int i = m + 1; i <= k; i++) {
 		memset(dp, -1, sizeof(dp));
 		dp[1].d = -INF;
 		for (int j = 2; j <= cnt; j++)
 			if (tree[1][j]) dp[j].d = -INF;
-		dfs(1, -1);
+		dfs(1, -1); // dp预处理
 		int idx, minnum = INF;
 		for (int j = 2; j <= cnt; j++) {
 			if (minnum > g[1][j] - dp[j].d) {
@@ -120,7 +123,6 @@ void init() {
 }
 
 int main() {
-	freopen("1639.in", "r", stdin);
 	scanf("%d", &n);
 	string s1, s2;
 	int d;
@@ -134,7 +136,7 @@ int main() {
 		g[u][v] = g[v][u] = min(g[u][v], d);
 	}
 	scanf("%d", &k);
-	kruskal();
+	kruskal(); // 忽略根节点先计算一次最小生成树，此时得到一个森林
 	solve();
 	printf("Total miles driven: %d\n", ans);
 	return 0;

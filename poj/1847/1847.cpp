@@ -43,7 +43,6 @@ int spfa() {
 }
 
 int main() {
-	freopen("1847.in", "r", stdin);
 	while (~scanf("%d %d %d", &n, &s, &t)) {
 		int cnt, a;
 		for (int i = 1; i <= n; i++) {

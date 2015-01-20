@@ -20,6 +20,7 @@ int mat[505];
 int vis[505];
 Point endPoint[505];
 vector<int> edges[505];
+// 两地的曼哈顿距离
 int getDist(int x1, int y1, int x2, int y2) {
 	return abs(x2 - x1) + abs(y2 - y1);
 }
@@ -48,7 +49,6 @@ int match() {
 }
 
 int main() {
-	freopen("2060.in", "r", stdin);
 	scanf("%d", &T);
 	while (T--) {
 		scanf("%d", &n);
@@ -59,9 +59,9 @@ int main() {
 		for (int i = 1; i <= n; i++) {
 			scanf("%d:%d", &h, &m);
 			scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
-			endPoint[i] = Point(x2, y2);
-			tim[i] = h * 60 + m;
-			dist[i] = getDist(x1, y1, x2, y2);
+			endPoint[i] = Point(x2, y2);	// 目的地
+			tim[i] = h * 60 + m;	// 出发时间
+			dist[i] = getDist(x1, y1, x2, y2); // 从出发地到目的地的距离
 			for (int j = 1; j < i; j++) {
 				if (dist[j] + getDist(endPoint[j].x, endPoint[j].y, x1, y1) + tim[j] < tim[i])
 					edges[j].push_back(i);

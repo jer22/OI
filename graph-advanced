@@ -84,12 +84,12 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=2060
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3041
 解法: 简单行列匹配
 
-POJ 2195 - Going Home(基础) AC
+###POJ 2195 - Going Home(基础) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2195
 题意：最小权值匹配
 解法：KM算法
 
-POJ 2516 -Minimum Cost(中等) AC
+###POJ 2516 -Minimum Cost(中等) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=2516
 题意：最小权值匹配或最小费用流
 解法：拆点 + KM算法(只有正确的才能过)，费用流(ms错的可能也能过)

@@ -44,7 +44,6 @@ int spfa() {
 }
 
 int main() {
-	freopen("1797.in", "r", stdin);
 	scanf("%d", &T);
 	int cas = 1;
 	while (T--) {

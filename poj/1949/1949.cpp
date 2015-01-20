@@ -42,7 +42,6 @@ void spfa() {
 }
 
 int main() {
-	freopen("1949.in", "r", stdin);
 	while (~scanf("%d", &n)) {
 		int a, c, k;
 		for (int i = 0; i <= n; i++)
