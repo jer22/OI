@@ -23,7 +23,7 @@ int n, m;
 Point points[MAXN];
 Edge edges[MAXN * MAXN];
 int vis[MAXN];
-int col[MAXN];
+int color[MAXN];
 double in[MAXN];
 int pre[MAXN];
 double getDist(int a, int b) {
@@ -49,37 +49,37 @@ double solve() {
 		for (int i = 1; i <= V; i++)
 			if (in[i] == INF && i != root) return -1;
 		int newNodes = 1;
-		memset(col, -1, sizeof(col));
+		memset(color, -1, sizeof(color));
 		memset(vis, -1, sizeof(vis));
 		in[root] = 0;
 		for (int i = 1; i <= V; i++) {
 			ans += in[i];
 			int v = i;
-			while (vis[v] != i && col[v] == -1 && v != root) {
+			while (vis[v] != i && color[v] == -1 && v != root) {
 				vis[v] = i;
 				v = pre[v];
 			}
-			if (v != root && col[v] == -1) {
+			if (v != root && color[v] == -1) {
 				for (int t = pre[v]; t != v; t = pre[t]) {
-					col[t] = newNodes;
+					color[t] = newNodes;
 				}
-				col[v] = newNodes++;
+				color[v] = newNodes++;
 			}
 		}
 		if (newNodes == 1) break;
 		for (int i = 1; i <= V; i++)
-			if (col[i] == -1)
-				col[i] = newNodes++;
+			if (color[i] == -1)
+				color[i] = newNodes++;
 		for (int i = 0; i < E; i++) {
 			int t = edges[i].to;
-			edges[i].from = col[edges[i].from];
-			edges[i].to = col[edges[i].to];
+			edges[i].from = color[edges[i].from];
+			edges[i].to = color[edges[i].to];
 			if (edges[i].from != edges[i].to) {
 				edges[i].v -= in[t];
 			}
 		}
 		V = newNodes - 1;
-		root = col[root];
+		root = color[root];
 	}
 	return ans;
 }
