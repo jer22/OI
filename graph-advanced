@@ -94,7 +94,7 @@ http://acm.pku.edu.cn/JudgeOnline/problem?id=2516
 题意：最小权值匹配或最小费用流
 解法：拆点 + KM算法(只有正确的才能过)，费用流(ms错的可能也能过)
 
-POJ 3686 - The Windy's(较难) AC
+###POJ 3686 - The Windy's(较难) AC
 http://acm.pku.edu.cn/JudgeOnline/problem?id=3686
 题意：最小权值匹配
 解法：拆点,然后尽管用KM算法去水吧，数据其实弱得不得了 O(50 * 50 * 2500) -> 16ms
@@ -106,16 +106,12 @@ https://www.spoj.pl/problems/COVER/
 解法：很牛叉的一道匹配
 相关：http://hi.baidu.com/roba/blog/item/c842fdfac10d24dcb48f31d7.html
 
-SGU 206. Roads(较难)
-http://acm.sgu.ru/problem.php?c0&problem=206
-解法：经典题目，也可以使用spoj 412那题的优
-
-POJ 1470 - Closest Common Ancestors(基础)
+###POJ 1470 - Closest Common Ancestors(基础)
 http://acm.pku.edu.cn/JudgeOnline/problem?id=1470
 题意：LCA问题
 解法：tarjan或RMQ，另外输入很恶心
 
-POJ 1985 - Cow Marathon(基础)
+###POJ 1985 - Cow Marathon(基础)
 http://acm.pku.edu.cn/JudgeOnline/problem?id=1985
 题意：树上的最长路径
 解法：dp

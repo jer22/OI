@@ -50,7 +50,6 @@ void tarjan() {
 }
 
 int main() {
-	freopen("2553.in", "r", stdin);
 	while (~scanf("%d", &n) && n) {
 		scanf("%d", &m);
 		for (int i = 0; i <= n; i++)

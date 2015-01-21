@@ -52,7 +52,6 @@ void tarjan() {
 }
 
 int main() {
-	freopen("2186.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m)) {
 		for (int i = 0; i <= n; i++)
 			edges[i].clear();
@@ -78,7 +77,5 @@ int main() {
 			printf("%d\n", ans);
 		}
 	}
-
-
 	return 0;
 }

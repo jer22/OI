@@ -65,7 +65,6 @@ int DP(int x) {
 }
 
 int main() {
-	freopen("2762.in", "r", stdin);
 	scanf("%d", &T);
 	while (T--) {
 		scanf("%d %d", &n, &m);

@@ -32,15 +32,15 @@ void init() {
 			A[i] = min(A[i], edges[i][j]);
 }
 
-bool dfs(int k) {
-	visA[k] = 1;
-	for (int i = 1; i <= mcnt; i++) {
-		if (!visB[i] && edges[k][i]) {
-			int t = edges[k][i] - A[k] - B[i];
+bool dfs(int i) {
+	visA[i] = 1;
+	for (int j = 1; j <= hcnt; j++) {
+		if (!visB[j] && edges[i][j]) {
+			int t = edges[i][j] - A[i] - B[j];
 			if (!t) {
-				visB[i] = 1;
-				if (!mat[i] || dfs(mat[i])) {
-					mat[i] = k;
+				visB[j] = 1;
+				if (!mat[j] || dfs(mat[j])) {
+					mat[j] = i;
 					return true;
 				}
 			} else d = min(d, t);

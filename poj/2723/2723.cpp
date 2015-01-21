@@ -82,7 +82,6 @@ int solve() {
 }
 
 int main() {
-	freopen("2723.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m) && n && m) {
 		for (int i = 0; i < n; i++)
 			scanf("%d %d", &key[i][0], &key[i][1]);
@@ -90,7 +89,7 @@ int main() {
 			scanf("%d %d", &door[i][0], &door[i][1]);
 		n <<= 1;
 		int ans = solve();
-		cout << ans << endl;
+		printf("%d\n", ans);
 	}
 	return 0;
 }
