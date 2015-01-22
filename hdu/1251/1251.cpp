@@ -48,9 +48,7 @@ int main() {
 		if (!s.size()) break;
 		insert(s);
 	}
-	while (getline(cin, s)) {
+	while (getline(cin, s))
 		find(s);
-	}
-
 	return 0;
 }
