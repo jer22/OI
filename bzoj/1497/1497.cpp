@@ -77,7 +77,6 @@ int dinic() {
 }
 
 int main() {
-	freopen("1497.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	int x;
 	for (int i = 1; i <= n; i++) {
