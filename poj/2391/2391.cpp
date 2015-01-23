@@ -121,7 +121,6 @@ long long solve() {
 }
 
 int main() {
-	freopen("2391.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m)) {
 		sum = 0;
 		for (int i = 1; i <= n; i++) {
@@ -140,6 +139,5 @@ int main() {
 		long long ans = solve();
 		printf("%lld\n", ans);
 	}
-
 	return 0;
 }

@@ -66,7 +66,6 @@ bool solve() {
 }
 
 int main() {
-	freopen("3207.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m)) {
 		for (int i = 1; i <= m << 1; i++)
 			edges[i].clear();

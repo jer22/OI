@@ -100,7 +100,6 @@ int solve(int l, int r) {
 }
 
 int main() {
-	freopen("2455.in", "r", stdin);
 	while (~scanf("%d %d %d", &n, &m, &t)) {
 		int l = INF, r = 0;
 		for (int i = 0; i < m; i++) {

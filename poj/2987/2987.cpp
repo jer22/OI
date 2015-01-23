@@ -79,7 +79,6 @@ long long dinic() {
 }
 
 int main() {
-	freopen("2987.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m)) {
 		for (int i = 0; i <= n; i++)
 			G[i].clear();
@@ -87,21 +86,21 @@ int main() {
 		int a, b;
 		long long x;
 		long long sum = 0, num = 0;
-		long long tmp = 5005;
+		long long k = 6000;
 		for (int i = 1; i <= n; i++) {
 			cin >> x;
 			if (x > 0) {
 				sum += x;
 				num++;
-				addEdge(0, i, x * tmp - 1);
-			} else addEdge(i, T, -x * tmp + 1);
+				addEdge(0, i, (long long)x * k - 1);
+			} else addEdge(i, T, (long long)-x * k + 1);
 		}
 		for (int i = 0; i < m; i++) {
 			scanf("%d %d", &a, &b);
 			addEdge(a, b, INF);
 		}
 		long long maxFlow = dinic();
-		cout << (maxFlow + num) % tmp << ' ' << sum - (maxFlow + num) / tmp << endl;
+		cout << (maxFlow + num) % k << ' ' << sum - (maxFlow + num) / k << endl;
 	}
 	return 0;
 }
