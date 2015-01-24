@@ -79,7 +79,6 @@ int solve() {
 }
 
 int main() {
-	freopen("3422.in", "r", stdin);
 	while (~scanf("%d %d", &n, &k)) {
 		for (int i = 0; i <= T; i++)
 			G[i].clear();
@@ -91,8 +90,8 @@ int main() {
 				int id = i * n + j;
 				// x :id * 2
 				// x':id * 2 + 1
-				addEdge(id * 2, id * 2 + 1, 1, -num); // x -> x' : (1, -num)
-				addEdge(id * 2, id * 2 + 1, k - 1, 0); // x -> x' : (k - 1, 0)
+				addEdge(id * 2, id * 2 + 1, 1, -num); // x -> x' : (cap:1, cost:-num)
+				addEdge(id * 2, id * 2 + 1, k - 1, 0); // x -> x' : (cap:k - 1, cost:0)
 				if (i) addEdge((id - n) * 2 + 1, id * 2, k, 0);
 				if (j) addEdge((id - 1) * 2 + 1, id * 2, k, 0);
 			}
@@ -102,7 +101,5 @@ int main() {
 		int ans = solve();
 		printf("%d\n", -ans);
 	}
-
-
 	return 0;
 }
