@@ -38,7 +38,6 @@ void match() {
 }
 
 int main() {
-	freopen("1486.in", "r", stdin);
 	int cas = 1;
 	while (~scanf("%d", &n) && n) {
 		memset(edges, 0, sizeof(edges));
@@ -72,7 +71,5 @@ int main() {
 		if (!flag) printf("none");
 		printf("\n\n");
 	}
-
-
 	return 0;
 }

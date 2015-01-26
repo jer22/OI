@@ -70,7 +70,6 @@ int match() {
 }
 
 int main() {
-	freopen("2195.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m) && n && m) {
 		char c;
 		mcnt = hcnt = 0;

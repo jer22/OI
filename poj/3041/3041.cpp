@@ -36,7 +36,6 @@ int match() {
 }
 
 int main() {
-	freopen("3041.in", "r", stdin);
 	while (~scanf("%d %d", &n, &m)) {
 		for (int i = 1; i <= n; i++)
 			edges[i].clear();

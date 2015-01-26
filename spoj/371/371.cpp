@@ -78,7 +78,6 @@ int solve() {
 }
 
 int main() {
-	freopen("371.in", "r", stdin);
 	int cas;
 	scanf("%d", &cas);
 	while (cas--) {
@@ -97,6 +96,5 @@ int main() {
 		int ans = solve();
 		printf("%d\n", ans);
 	}
-
 	return 0;
 }
