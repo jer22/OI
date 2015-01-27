@@ -62,7 +62,6 @@ int match() {
 }
 
 int main() {
-	freopen("2516.in", "r", stdin);
 	while (~scanf("%d %d %d", &n, &m, &k)) {
 		if (!n && !m && !k) break;
 		for (int i = 1; i <= n; i++)

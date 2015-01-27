@@ -59,7 +59,6 @@ int match() {
 }
 
 int main() {
-	freopen("3686.in", "r", stdin);
 	int cas;
 	scanf("%d", &cas);
 	while (cas--) {

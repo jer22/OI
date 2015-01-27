@@ -35,7 +35,6 @@ void dfs(int i) {
 }
 
 int main() {
-	freopen("1470.in", "r", stdin);
 	while (~scanf("%d", &n)) {
 		memset(lca, 0, sizeof(lca));
 		memset(ans, 0, sizeof(ans));
@@ -74,7 +73,5 @@ int main() {
 			if (ans[i]) printf("%d:%d\n", i, ans[i]);
 		}
 	}
-
-
 	return 0;
 }
