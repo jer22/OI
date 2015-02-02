@@ -9,49 +9,35 @@
 using namespace std;
 
 struct Edge {
-	int from;
-	int to;
+	int u;
+	int v;
 	int value;
+	Edge() {}
+	Edge(int a, int b, int c) : u(a), v(b), value(c) {}
 	bool operator < (const Edge &e) const {
 		return value < e.value;
 	}
 };
 
-Edge edges[MAXE];
-int t = 0;
-void addEdge(int u, int v, int value) {
-	Edge e;
-	e.from = u;
-	e.to = v;
-	e.value = value;
-	edges[t++] = e;
-}
-
 int V, E;
-int parent[MAXV];
+int parent[MAXV]; // 并查集
+Edge edges[MAXE];
+vector<Edge> ans;
 
 int find(int p) {
-	if (parent[p] == p)
-		return p;
+	if (parent[p] == p) return p;
 	return parent[p] = find(parent[p]);
 }
 
-int un(int p, int q) {
-	int tx = find(p);
-	int ty = find(q);
-	if (tx == ty)
-		return 0;
-	parent[tx] = q;
-	return 1;
+void un(int p, int q) {
+	parent[find(p)] = find(q);
 }
 
-vector<Edge> ans;
 int main() {
 	scanf("%d %d", &V, &E);
 	int x, y, z;
 	for (int i = 0; i < E; i++) {
-		scanf("%d %d %d", &x, &y, &z);
-		addEdge(x, y, z);
+		scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].value);
 	}
 	sort(edges, edges + E);
 	for (int i = 0; i < V; i++) {
@@ -59,15 +45,13 @@ int main() {
 	}
 	for (int i = 0; i < E; i++) {
 		Edge e = edges[i];
-		if (find(e.from) != find(e.to)) {
+		if (find(e.u) != find(e.v)) {
 			ans.push_back(e);
-			un(e.from, e.to);
+			un(e.u, e.v);
 		}
 	}
-	printf("\n");
 	for (int i = 0; i < ans.size(); i++) {
-		printf("%d %d %d\n", ans[i].from, ans[i].to, ans[i].value);
+		printf("%d %d %d\n", ans[i].u, ans[i].v, ans[i].value);
 	}
-
 	return 0;
 }
