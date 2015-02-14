@@ -44,7 +44,7 @@ int brk[1110][8], stack[8], top = 0, tot = 0;
 Num dp[8][1110];
 int main() {
 	freopen("vans.in", "r", stdin);
-	freopen("vans.out", "w", stdout);
+	//freopen("vans.out", "w", stdout);
 	cin >> N;
 	int m = 1 << ((n + 1) << 1);
 	for (int i = 0; i < m; i++) {

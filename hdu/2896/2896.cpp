@@ -34,27 +34,31 @@ void insert(char *p, int sgn) {
 }
 
 void build() {
-	queue<Node *> q;
+	queue<Node*> q;
+	int i;
+	root->fail = NULL;
 	q.push(root);
 	while (!q.empty()) {
 		Node *p = q.front();
-		Node *temp = NULL;
 		q.pop();
-		for (int i = 0; i < 127; i++) {
-			if (p -> next[i] == NULL) continue;
-			if (p == root) p -> next[i] -> fail = root;
-			else {
-				temp = p -> fail;
-				while (temp != NULL) {
-					if (temp -> next[i] != NULL) {
-						p -> next[i] -> fail = temp -> next[i];
-						break;
-					}
-					temp = temp -> fail;
+		Node *temp = NULL;
+		for (i = 0; i < 127; i++) {
+			temp = p->fail;
+			while (temp != NULL && temp->next[i] == NULL)
+				temp = temp->fail;
+			if (p->next[i] != NULL) {
+				if (temp == NULL)
+					p->next[i]->fail = root;
+				else {
+					p->next[i]->fail = temp->next[i];
 				}
-				if (temp == NULL) p -> next[i] -> fail = root;
+				q.push(p->next[i]);
+			} else {
+				if (temp == NULL)
+					p->next[i] = root;
+				else
+					p->next[i] = temp->next[i];
 			}
-			q.push(p -> next[i]);
 		}
 	}
 }
