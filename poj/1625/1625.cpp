@@ -35,7 +35,19 @@ void build() {
 		q.pop();
 		for (int i = 0; i < 256; i++) {
 			if (!hash[i]) continue;
-			
+			while (temp != NULL && temp -> next[i] == NULL)
+				temp = temp -> fail;
+			if (p -> next[i] != NULL) {
+				if (temp == NULL) p -> next[i] -> fail = root;
+				else {
+					p -> next[i] -> fail = temp -> next[i];
+					p -> next[i] -> cnt += temp -> next[i] -> cnt;
+				}
+				q.push(p -> next[i]);
+			} else {
+				if (temp == NULL) p -> next[i] = root;
+				else p -> next[i] = temp -> next[i];
+			}
 		}
 	}
 }
