@@ -68,6 +68,7 @@ int main() {
 			insert(str);
 		}
 		build();
+		
 	}
 
 
