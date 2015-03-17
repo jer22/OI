@@ -41,7 +41,7 @@ void grahamScan() {
 	stack[top++] = p[1];
 	stack[top++] = p[2];
 	for (int i = 3; i < n; i++) {
-		while (multi(stack[top - 2], stack[top - 1], p[i]) <= 0) {
+		while (multi(stack[top - 2], stack[top - 1], p[i]) < 0) {
 			top--;
 		}
 		stack[top++] = p[i];
