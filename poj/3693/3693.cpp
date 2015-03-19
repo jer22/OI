@@ -81,69 +81,50 @@ int LCP(int a, int b) {
 }
 
 int f[MAXN];
-struct node{
-	int idx, len;
-	node() {}
-	node(int a, int b) : idx(a), len(b) {}
-};
-vector<node> v;
 int main() {
 	freopen("3693.in", "r", stdin);
+	int cas = 1;
 	while (~scanf("%s", s)) {
 		if (s[0] == '#') break;
+		printf("Case %d: ", cas++);
 		n = strlen(s);
 		getSA();
 		getHeight();
 		RMQ();
 		int ans = 0;
 		memset(f, 0, sizeof(f));
-		v.clear();
+		memset(tmp, 0, sizeof(tmp));
 		for (int l = 1; l <= n / 2; l++) {
 			for (int j = 0; j < (n - 1) / l; j++) {
 				int x = j * l, y = (j + 1) * l;
 				int z = LCP(x, y);
-				if (ans < z / l + 1) {
-					ans = z / l + 1;
-					v.clear();
-					v.push_back(node(x, z));
-				} else if (ans == z / l + 1) v.push_back(node(x, z));
-
+				f[l] = max(f[l], z / l + 1);
 				if (z % l) {
 					z = LCP(x - (l - z % l), y - (l - z % l));
-					if (ans < z / l + 1) {
-						ans = z / l + 1;
-						cout << x << ' ' << y << ' ' << z << '|' << endl;
-						// cout << z << endl;
-
-						v.clear();
-						v.push_back(node(x - (l - z % l), z));
-					} else if (ans == z / l + 1) v.push_back(node(x - (l - z % l), z));
+					f[l] = max(f[l], z / l + 1);
 				}
 			}
 		}
-		// cout << ans << endl;
-		// for (int l = 1; l < n / 2; l++)
-		// 	ans = max(ans, f[l]);
-		// for (int l = 1; l < n / 2; l++) {
-		// 	if (f[l] == ans) {
-		// 		cout << l << endl;
-		// 	}
-		// }
-		int siz = v.size();
-		int idx;
-		int rk = 0x3f3f3f3f;
-		for (int i = 0; i < siz; i++) {
-			cout << v[i].idx << ' ' << v[i].len << endl;
-			if (rank[v[i].idx] < rk) {
-				rk = rank[v[i].idx];
-				idx = i;
+		for (int l = 1; l <= n / 2; l++)
+			ans = max(ans, f[l]);
+		int tot = 0;
+		for (int l = 1; l <= n / 2; l++)
+			if (f[l] == ans) tmp[tot++] = l;
+		bool flag = 1;
+		for (int i = 0; i < n && flag; i++) {
+			int x = sa[i];
+			for (int j = 0; j < tot; j++) {
+				if (x + tmp[j] >= n) continue;
+				int z = LCP(x, x + tmp[j]);
+				if (z >= (ans - 1) * tmp[j]) {
+					flag = false;
+					for (int k = x; k < x + ans * tmp[j]; k++)
+						cout << s[k];
+					cout << endl;
+					break;
+				}
 			}
 		}
-		int len = v[idx].len;
-		idx = v[idx].idx;
-		for (int i = idx; i < idx + len; i++)
-			cout << s[i];
-		cout << endl;
 	}
 
 	return 0;
