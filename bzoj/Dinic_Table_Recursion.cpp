@@ -73,7 +73,6 @@ bool build() {
 
 /**
 	寻找增广路
-	为dfs算法
 	@param x：当前节点
 	@param a：目前为止所有弧的最小残量
 	@return：流量
@@ -117,6 +116,5 @@ int main( void ) {
 		addEdge(x, y, l);
 	}
 	printf("%d\n", dinic(1, V));
-	
 	return 0;
 }
