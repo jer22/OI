@@ -32,7 +32,7 @@ int cmp(Point a, Point b) {
 	return t > 0;
 }
 
-void graham() {
+void graham_scan() {
 	int t = 0;
 	for (int i = 1; i < n; i++) {
 		if (p[i].y < p[t].y || (p[i].y == p[t].y && p[i].x < p[t].x))
@@ -52,11 +52,10 @@ void graham() {
 }
 
 int main() {
-	freopen("2187.in", "r", stdin);
 	cin >> n;
 	for (int i = 0; i < n; i++)
 		scanf("%lld %lld", &p[i].x, &p[i].y);
-	graham();
+	graham_scan();
 	for (int i = top; i < top + top; i++)
 		stack[i] = stack[i - top];
 	n = top << 1;

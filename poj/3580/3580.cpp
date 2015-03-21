@@ -192,7 +192,6 @@ void del() {
 }
 
 int main() {
-	freopen("3580.in", "r", stdin);
 	scanf("%d", &n);
 	for (int i = 1; i <= n; i++)
 		scanf("%d", &arr[i + 1]);

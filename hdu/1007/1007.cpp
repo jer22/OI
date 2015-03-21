@@ -55,7 +55,6 @@ double dfs(int l, int r) {
 }
 
 int main() {
-	freopen("1007.in", "r", stdin);
 	while (~scanf("%d", &n) && n) {
 		for (int i = 0; i < n; i++)
 			scanf("%lf %lf", &p[i].x, &p[i].y);
@@ -63,7 +62,5 @@ int main() {
 		double ans = sqrt(dfs(0, n - 1)) / 2;
 		printf("%.2lf\n", ans);
 	}
-
-
 	return 0;
 }
