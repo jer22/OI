@@ -1,10 +1,3 @@
-/**************************************************************
-	Problem: 2002
-	User: shijieyywd
-	Language: C++
-	Result: Runtime_Error
-****************************************************************/
- 
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
