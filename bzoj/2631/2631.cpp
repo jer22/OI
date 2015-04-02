@@ -17,7 +17,7 @@ int st[MAXN], top = 0;
 unsigned int fa[MAXN], tr[MAXN][2], siz[MAXN], sum[MAXN], v[MAXN];
 unsigned int add[MAXN], mul[MAXN];
 bool rev[MAXN];
-void pushup(int rt) {
+inline void pushup(int rt) {
 	int l = tr[rt][0], r = tr[rt][1];
 	siz[rt] = siz[l] + siz[r] + 1;
 	siz[rt] %= MOD;
@@ -25,14 +25,14 @@ void pushup(int rt) {
 	sum[rt] %= MOD;
 }
 
-void lazy(int rt, int m, int a) {
+inline void lazy(int rt, int m, int a) {
 	v[rt] = (v[rt] * m + a) % MOD; 
 	sum[rt] = (sum[rt] * m + a * siz[rt]) % MOD;
 	add[rt] = (add[rt] * m + a) % MOD;
 	mul[rt] = (mul[rt] * m) % MOD;
 }
 
-void pushdown(int rt) {
+inline void pushdown(int rt) {
 	int l = tr[rt][0], r = tr[rt][1];
 	if (rev[rt]) {
 		rev[rt] ^= 1; rev[l] ^= 1; rev[r] ^= 1;
@@ -46,11 +46,11 @@ void pushdown(int rt) {
 	}
 }
 
-bool isroot(int x) {
+inline bool isroot(int x) {
 	return tr[fa[x]][0] != x && tr[fa[x]][1] != x;
 }
 
-void rotate(int x) {
+inline void rotate(int x) {
 	int y = fa[x], z = fa[y];
 	int l, r;
 	if (tr[y][0] == x) l = 0;
@@ -69,7 +69,7 @@ void rotate(int x) {
 	pushup(x);
 }
 
-void splay(int x) {
+inline void splay(int x) {
 	top = 0;
 	st[++top] = x;
 	for (int i = x; !isroot(i); i = fa[i])
@@ -85,23 +85,23 @@ void splay(int x) {
 	}
 }
 
-void access(int x) {
+inline void access(int x) {
 	for (int t = 0; x; t = x, x = fa[x])
 		splay(x), tr[x][1] = t, pushup(x);
 }
 
-void makeroot(int x) {
+inline void makeroot(int x) {
 	access(x);
 	splay(x);
 	rev[x] ^= 1;
 }
 
-void link(int x, int y) {
+inline void link(int x, int y) {
 	makeroot(x);
 	fa[x] = y;
 }
 
-void cut(int x, int y) {
+inline void cut(int x, int y) {
 	makeroot(x);
 	access(y);
 	splay(y);
@@ -109,7 +109,7 @@ void cut(int x, int y) {
 	pushup(y);
 }
 
-void addup(int x, int y) {
+inline void addup(int x, int y) {
 	int c;
 	scanf("%d",&c);
 	makeroot(x);
@@ -118,13 +118,13 @@ void addup(int x, int y) {
 	lazy(y, 1, c);
 }
 
-void linkcut(int x, int y) {
+inline void linkcut(int x, int y) {
 	cut(x, y);
 	scanf(" %d %d", &x, &y);
 	link(x, y);
 }
 
-void multi(int x, int y) {
+inline void multi(int x, int y) {
 	int c;
 	scanf("%d", &c);
 	makeroot(x);
@@ -133,7 +133,7 @@ void multi(int x, int y) {
 	lazy(y, c, 0);
 }
 
-void calc(int x, int y) {
+inline void calc(int x, int y) {
 	makeroot(x);
 	access(y);
 	splay(y);
