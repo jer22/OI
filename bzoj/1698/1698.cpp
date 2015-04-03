@@ -28,7 +28,7 @@ bool check(int x, int y) {
 int dist[1005];
 long long ans[1005];
 bool vis[1005];
-int spfa() {
+void bfs() {
 	queue<int> q;
 	memset(dist, 0x3f, sizeof(dist));
 	memset(ans, 0, sizeof(ans));
@@ -41,7 +41,6 @@ int spfa() {
 	while (!q.empty()) {
 		int cur = q.front();
 		q.pop();
-		// vis[cur] = 0;
 		for (int i = 0; i < edges[cur].size(); i++) {
 			Edge e = edges[cur][i];
 			if (dist[cur] + e.v == dist[e.to]) {
@@ -65,7 +64,6 @@ int spfa() {
 			}
 		}
 	}
-	return dist[ex * m + ey];
 }
 
 int tmp[1005], tot = 0;
@@ -88,7 +86,6 @@ void dfs(int x, int y) {
 }
 
 int main() {
-	freopen("1698.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	int t;
 	for (int i = 0; i < n; i++) {
@@ -136,13 +133,11 @@ int main() {
 			}
 		}
 	}
-	spfa();
-
-	int res = dist[ex * m + ey];
-	if (res == 0x3f3f3f3f) {
+	bfs();
+	if (dist[ex * m + ey] == 0x3f3f3f3f) {
 		printf("-1\n");
 		return 0;
 	}
-	printf("%d\n%lld\n", res - 1, ans[ex * m + ey]);
+	printf("%d\n%lld\n", dist[ex * m + ey] - 1, ans[ex * m + ey]);
 	return 0;
 }
