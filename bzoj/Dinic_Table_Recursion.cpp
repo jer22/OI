@@ -20,7 +20,6 @@ struct Edge{
 int V, E, S, T;
 vector<Edge> edges; // 边 edges[e]和edges[e ^ 1]互为反向弧
 vector<int> G[MAXV]; // 邻接表 G[i][j]表示节点i的第j条边在edges中的序号
-bool vis[MAXV];		// build方法中使用，表示的i条边有没有被标号过
 int layer[MAXV];	// 节点i的层
 int cur[MAXV];		// 当前弧下标
 
@@ -30,17 +29,8 @@ int cur[MAXV];		// 当前弧下标
 	edges[i]与edges[i ^ 1]互为反向弧
 */
 void addEdge(int from, int to, int cap) {
-	Edge temp;
-	temp.from = from;
-	temp.to = to;
-	temp.cap = cap;
-	temp.flow = 0;
-	edges.push_back(temp);
-	temp.from = to;
-	temp.to = from;
-	temp.cap = 0;
-	temp.flow = 0;
-	edges.push_back(temp);
+	edges.push_back((Edge){from, to, cap, 0});
+	edges.push_back((Edge){to, from, 0, 0});
 	E = edges.size();
 	G[from].push_back(E - 2);
 	G[to].push_back(E - 1);
@@ -51,24 +41,22 @@ void addEdge(int from, int to, int cap) {
 	@return：是否存在s-t路径
 */
 bool build() {
-	memset(vis, 0, sizeof(vis));
+	memset(layer, -1, sizeof(layer));
 	queue<int> q;
 	q.push(S);
 	layer[S] = 0;
-	vis[S] = 1;
 	while(!q.empty()) {
 		int x = q.front();
 		q.pop();
 		for (int i = 0; i < G[x].size(); i++) {
 			Edge& e = edges[G[x][i]];
-			if (!vis[e.to] && e.cap > e.flow) { // 只考虑残量网络中的弧
-				vis[e.to] = 1;
+			if (layer[e.to] == -1 && e.cap > e.flow) { // 只考虑残量网络中的弧
 				layer[e.to] = layer[x] + 1;
 				q.push(e.to);
 			}
 		}
 	}
-	return vis[T];
+	return layer[T] != -1;
 }
 
 /**
@@ -89,16 +77,14 @@ int find(int x, int a) {
 			edges[G[x][i] ^ 1].flow -= f;
 			flow += f;
 			a -= f;
-			if (!a)
-				break;
+			if (!a) break;
 		}
 	}
 	return flow;
 }
 
 int dinic(int s, int t) {
-	S = s;
-	T = t;
+	S = s, T = t;
 	int flow = 0;
 	while(build()) {
 		memset(cur, 0, sizeof(cur));
