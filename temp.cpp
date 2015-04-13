@@ -1,116 +1,75 @@
-/*************************************************************************
-    > File Name: 1743.cpp
-    > Author: wmg_1001
-    > Mail: wmg_1007@163.com 
-    > Created Time: 2014Äê12ÔÂ19ÈÕ ÐÇÆÚÎå 23Ê±35·Ö05Ãë
- ************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#define s(_)sizeof(_)
+#define n void*
+#define z(_)_,_,_
+#define x (s*)__
+#define y (s*)_
+#define h C(y,y)
+#define o &d
+#define t() (p)
+#define w(_)_,_
+typedef n (*(*(*(*p)(n,n))(n,n))(n,n))(n,n);
+typedef struct s { struct s* a	   ; struct s* UNUSED; } s;
+typedef struct t { struct s* UNUSED; struct s* a	 ; } *t;
+n __(n _,n __)	 { return  _;}n _(n _,n __){return __; }
+typedef unsigned char e;
+#define _(_)((*_).a)
 
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <cmath>
-#include <cstdio>
-#include <cstdlib>
-#include <climits>
-#include <ctime>
-#include <iomanip>
-#include <algorithm>
-#include <deque>
-#include <queue>
-#include <map>
-#include <set>
-using namespace std;
+								   s* 
+								   w,
+							   a={x	 ,x},
+							   b={x	 ,y},
+   c={y,x},d={y,y};s l[]={&b,&d,w	   (w(w(w(w(w(&d)))))),w(&d),&c,&d,w(w(w(
+   &d))),&c,w(&b),&d,&a,z(&d),z(w	   (w(w(w(w(&d)))))),&b,&b,w(&d),&a,&b,w(&
+  d),																		z(w
+ (w(																		 w(w
 
-const int maxn = 20005;
-const int maxm = 205;
+	(&d))))),w(w(w(&d))), &b,&c,&d, &d,&a,&c ,w(w(&d)), &c,z(&b) ,w(&d),w(&a)
+	};s* C(s* a, s* b) {s* _=malloc(s(s));_(_)=a;_((t)_)=b;return _;}e k2=s(l
+	);p																	  f(p
+	a,p																	   b)
+   
+				 {	 e k;s d;p v,r,			 q,i,C,c,u,g,m=t(	)
+_			   (   _(_(w)));C=t()			_(_(&l[fread(&k,s(e	  )
+,s			  (	  e),stdin)]));v			   =C(_,__);d=l[k=(e   )
+C			 (	 k2,k)];c=(u=a(					  b,_),i=(t()_((t	)
+_		   (   _(w))))(_,_(_(o))				),(a(_(_((t)o)),(t(	  )
+_		  (	  _((t)o)))(_,__)					   ))(b(_((t)_((t)o)   )
+,		 (	 t()_((t)_((t)o)))					  (_,__)),_));{p a=t(	)
+_		 (	 (t)_(o));{p b=							 C(_,i(u(_,__),_)	)
+;		{	p u=C(_,(t()_(_(o)					   ))(_,__));_(_(_(w))	 )
+=	   (   s*)i(__,_(_(								  _(w))));r=b(m(c,_	  )
+,C	   (   m(_,(t()_((								  t)_(_(w))))(_,__)	  )
+,	  (	  f)));v=b(_,v);i							  =b(a(_,__),_);g=(b   )
+	  (	  a(m(c(_,__),__								),_),_);q=u(_((t   )
+_	 (	 o)),_)((t()_(									 (t)_(_(w))))((t(	)
+_	 (	 _((t)o)))(_(_((t							   )_(w))),(t()_(_((t	)
+_	 (	 w))))(_,__))(									 _,__),_)(_,__),_	)
+;_	 (	 _((t)_(w)))				   =			   (s*)u(_((t)_(o)),_	)
+	 (	 (t()_((t)_(_(w))))							  (_,__),_)(_(_((t)o)	)
+,_	 (	 _((t)_(w))));}								   }_((t)_(_(w)))=(s*	)
+q	 (	 a=(t()_((t)_(_(w)))						)(_,__),_((t)_(_(w)))	)
+	 ;	 fwrite((k=k,&k2)								 ,s(e),u(_,g)(s(e	)
+,	 (	 e)s(s[s(s[s(s[s		cd						(s)])])])),stdout	)
+	  ;	  fwrite((k2=k,&k)							   ,s(e),u(__,g)(s(e   )
+,	  (	  e)s(s[s(s[s(s[s							   (s)])])])),stdout   )
+;_	  (	  _(_((t)w)))=(s*)							 u((t()_(_(_((t)w)))   )
+	   (   _,__),_(_(_((t)w							  ))));_(_((t)_(w))	  )
+=	   (   s*)q(a(_(_((t)							  o)),_(_((t)_(w)))	  )
+,_		(	_((t)_(w))));}						  _((t)_(_((t)w)))=(s*	 )
+		 (	 t()_(_(_((t)w)))						)(_((t)_(_((t)w))	)
+,u		  (	  (t()_((t)_(_((					  t)w))))(_,__),_((t   )
+_		   (   _((t)w)))));g					   =u((q=u(C(__,(t(	  )
+_			(	_(_((t)w))))(_((t			   )_(_((t)w))),_)),_)	 )
+			 (	 _,__),g);v=g(					  __,i(u(_,i(f,_)	)
+			   (   _(_((t)o)),_(				(t)_((t)o))),v)	  )
 
-int n, A[maxn], sa[maxn], rank[maxn], height[maxn], tmp[maxn];
-struct Node {
-	int id, c[2];
-}Count[maxn], Count_b[maxn];
+	   ,r=																 q(_
+	   ,g(																 f,i
+	   (v(f,(_(_(_(w)))=(s*)m,_)),r)));return q(_,v)(r(g(__,a),g(__,b)),r);}
 
-void Make_sa(void) {
-	memset(tmp, 0, sizeof(tmp));
-	for (int i = 0; i < n; i++) tmp[A[i]]++;
-	for (int i = 1; i < maxm; i++) tmp[i] += tmp[i - 1];
-	for (int i = 0; i < n; i++) rank[i] = tmp[A[i] - 1];
-	int j = 0;
-	while ((1 << j) < n) {
-		for (int i = 0; i < n; i++) {
-			Count[i].c[0] = rank[i], Count[i].c[1] = (i + (1 << j)) >= n ? -1 : rank[i + (1 << j)];
-			Count[i].id = i;
-		}
-		for (int i = 1; i >= 0; i--) {
-			memset(tmp, 0, sizeof(tmp));
-			for (int j = 0; j < n; j++) tmp[Count[j].c[i] + 1]++;
-			for (int j = 1; j < maxn; j++) tmp[j] += tmp[j - 1];
-			for (int j = n - 1; j >= 0; j--) Count_b[--tmp[Count[j].c[i] + 1]] = Count[j];
-			for (int i = 0; i < n; i++) Count[i] = Count_b[i];
-		}
-		rank[Count[0].id] = 0;
-		for (int i = 1; i < n; i++) {
-			rank[Count[i].id] = rank[Count[i - 1].id];
-			if (Count[i].c[0] != Count[i - 1].c[0] || Count[i].c[1] != Count[i - 1].c[1]) rank[Count[i].id]++;
-		}
-		j++;
-	}
-	for (int i = 0; i < n; i++) sa[rank[i]] = i;
-}
-
-void Make_height(void) {
-	int k = 0, j;
-	for (int i = 0; i < n; height[rank[i++]] = k) {
-		if (rank[i] == 0) k = 0;
-		else {
-			for (k ? k-- : 0, j = sa[rank[i] - 1]; A[i + k] == A[j + k]; k++)
-				if (i + k == n - 1 || j + k == n - 1) {
-					k++;
-					break;
-				}
-		}
-	}
-}
-
-bool Calc(int x) {
-	int l, r;
-	for (int i = 0; i < n; i++) {
-		if (height[i] < x) {
-			l = r = sa[i];
-			continue;
-		}
-		l = min(l, sa[i]);
-		r = max(r, sa[i]);
-		if (r - l > x) return true;
-	}
-	return false;
-}
-
-int main() {
-	freopen("1743.in", "r", stdin);
-	// freopen("1743.out", "w", stdout);
-	while (scanf("%d", &n) != EOF && n != 0) {
-		for (int i = 0; i < n; i++) scanf("%d", &A[i]);
-		if (n == 1) {
-			cout << 0 << endl;
-			continue;
-		}
-	
-		for (int i = 0; i < n; i++) A[i] = A[i + 1] - A[i] + 87;
-		Make_sa();
-		Make_height();
-		int l = 0, r = n;
-		while (l < r) {
-			if (r == l + 1) {
-				if (Calc(r)) l = r;
-				else r = l;
-			} else {
-				int mid = (l + r) >> 1;
-				if (Calc(mid)) l = mid;
-				else r = mid;
-			}
-		}
-		if (l > 3) printf("%d\n", l + 1);
-		else printf("0\n");
-	}
-	return 0;
-}
+	  int																   main
+	   (){w=C(C(h,h),C(h,h));return	   printf((e*)f(_,_)("OK\n","\n ^ Error\n"
+								  ""  ))
+									;}
