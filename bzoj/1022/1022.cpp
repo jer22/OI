@@ -23,6 +23,5 @@ int main() {
 		if (x && y || !x && !y) printf("John\n");
 		else printf("Brother\n");
 	}
-
 	return 0;
 }
