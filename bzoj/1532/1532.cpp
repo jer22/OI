@@ -1,16 +1,13 @@
 #include <cstdio>
-#include <algorithm>
 #include <cstring>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <queue>
 
-#define p(i, j) (i * V + j)
+#define INF 0x3f3f3f3f
 
 using namespace std;
-
-const int INF = 0x3f3f3f3f;
-const int MAXV = 40005;
 
 /**
 	储存弧的结构
@@ -22,24 +19,11 @@ struct Edge{
 	Edge(int a, int b) : to(a), cap(b) {}
 };
 
-char fuck[205][205];
-int V, E, S, T;
+int n, m, S, T;
 vector<Edge> edges; // 边 edges[e]和edges[e ^ 1]互为反向弧
-vector<int> G[MAXV]; // 邻接表 G[i][j]表示节点i的第j条边在edges中的序号
-int layer[MAXV];	// 节点i的层
-int cur[MAXV];		// 当前弧下标
-
-/**
-	插入弧
-	将插入两条弧，一条是它本身，一条是它的反向弧
-	edges[i]与edges[i ^ 1]互为反向弧
-*/
-
-bool check(int x, int y) {
-	if (fuck[x][y] == '1') return false;
-	if (x < 0 || x >= V || y < 0 || y >= V) return false;
-	return true;
-}
+vector<int> G[20005]; // 邻接表 G[i][j]表示节点i的第j条边在edges中的序号
+int layer[20005];	// 节点i的层
+int cur[20005];		// 当前弧下标
 
 /**
 	插入弧
@@ -108,37 +92,39 @@ int dinic() {
 	return flow;
 }
 
+int a[10005], b[10005];
 
+void build_graph(int x) {
+	edges.clear();
+	for (int i = 0; i < 20003; i++)
+		G[i].clear();
+	for (int i = 1; i <= m; i++) {
+		addEdge(S, i + n, 1);
+		addEdge(i + n, a[i], 1);
+		addEdge(i + n, b[i], 1);
+	}
+	for (int i = 1; i <= n; i++)
+		addEdge(i, T, x);
+}
 
-int dir[8][2] = {{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {2, -1}, {-2, 1}, {-2, -1}};
+int solve() {
+	int l = 0, r = 5000;
+	S = 0, T = n + m + 1;
+	while (l < r) {
+		int mid = l + r >> 1;
+		build_graph(mid);
+		if (dinic() == m) r = mid;
+		else l = mid + 1;
+	}
+	return l;
+}
+
 int main() {
-	freopen("3175.in", "r", stdin);
-	scanf("%d", &V);
-	int tot = 0;
-	for (int i = 0; i < V; i++)
-		scanf("%s", fuck[i]);
-	for (int i = 0; i < V; i++) {
-		for (int j = 0; j < V; j++) {
-			if (fuck[i][j] == '0') tot++;
-			if ((i + j) & 1) addEdge(p(i, j), V * V + 1, 1);
-			else addEdge(0, p(i, j), 1);
-		}
-	}
-	for (int i = 0; i < V; i++) {
-		for (int j = 0; j < V; j++) {
-			if ((i + j) & 1) continue;
-			if (fuck[i][j] == '1') continue;
-			int p = p(i, j);
-			for (int k = 0; k < 8; k++) {
-				int nx = i + dir[k][0], ny = j + dir[k][1];
-				if (check(nx, ny)) {
-					int q = p(nx, ny);
-					addEdge(p, q, INF);
-				}
-			}
-		}
-	}
-	S = 0, T = V * V + 1;
-	printf("%d\n", tot - dinic());
+	freopen("1532.in", "r", stdin);
+	scanf("%d %d", &n, &m);
+	for (int i = 1; i <= m; i++)
+		scanf("%d %d", &a[i], &b[i]);
+	printf("%d\n", solve());
+
 	return 0;
 }

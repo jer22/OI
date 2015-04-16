@@ -1,16 +1,9 @@
-#include <cstdio>
-#include <algorithm>
-#include <cstring>
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 
-#define p(i, j) (i * V + j)
+#define INF 0x3f3f3f3f
+#define MAXN 205
 
 using namespace std;
-
-const int INF = 0x3f3f3f3f;
-const int MAXV = 40005;
 
 /**
 	储存弧的结构
@@ -22,24 +15,11 @@ struct Edge{
 	Edge(int a, int b) : to(a), cap(b) {}
 };
 
-char fuck[205][205];
-int V, E, S, T;
+int n, m, S, T;
 vector<Edge> edges; // 边 edges[e]和edges[e ^ 1]互为反向弧
-vector<int> G[MAXV]; // 邻接表 G[i][j]表示节点i的第j条边在edges中的序号
-int layer[MAXV];	// 节点i的层
-int cur[MAXV];		// 当前弧下标
-
-/**
-	插入弧
-	将插入两条弧，一条是它本身，一条是它的反向弧
-	edges[i]与edges[i ^ 1]互为反向弧
-*/
-
-bool check(int x, int y) {
-	if (fuck[x][y] == '1') return false;
-	if (x < 0 || x >= V || y < 0 || y >= V) return false;
-	return true;
-}
+vector<int> G[MAXN]; // 邻接表 G[i][j]表示节点i的第j条边在edges中的序号
+int layer[MAXN];	// 节点i的层
+int cur[MAXN];		// 当前弧下标
 
 /**
 	插入弧
@@ -99,7 +79,8 @@ int find(int x, int a) {
 	return flow;
 }
 
-int dinic() {
+int dinic(int s, int t) {
+	S = s, T = t;
 	int flow = 0;
 	while(build()) {
 		memset(cur, 0, sizeof(cur));
@@ -108,37 +89,19 @@ int dinic() {
 	return flow;
 }
 
-
-
-int dir[8][2] = {{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {2, -1}, {-2, 1}, {-2, -1}};
 int main() {
-	freopen("3175.in", "r", stdin);
-	scanf("%d", &V);
-	int tot = 0;
-	for (int i = 0; i < V; i++)
-		scanf("%s", fuck[i]);
-	for (int i = 0; i < V; i++) {
-		for (int j = 0; j < V; j++) {
-			if (fuck[i][j] == '0') tot++;
-			if ((i + j) & 1) addEdge(p(i, j), V * V + 1, 1);
-			else addEdge(0, p(i, j), 1);
+	freopen("2929.in", "r", stdin);
+	scanf("%d", &n);
+	int a, k, b;
+	for (int i = 1; i < n; i++) {
+		scanf("%d", &k);
+		for (int j = 0; j < k; j++) {
+			scanf("%d", &b);
+			if (i == 1 || b == n)
+				addEdge(i, b, 1);
+			else addEdge(i, b, INF);
 		}
 	}
-	for (int i = 0; i < V; i++) {
-		for (int j = 0; j < V; j++) {
-			if ((i + j) & 1) continue;
-			if (fuck[i][j] == '1') continue;
-			int p = p(i, j);
-			for (int k = 0; k < 8; k++) {
-				int nx = i + dir[k][0], ny = j + dir[k][1];
-				if (check(nx, ny)) {
-					int q = p(nx, ny);
-					addEdge(p, q, INF);
-				}
-			}
-		}
-	}
-	S = 0, T = V * V + 1;
-	printf("%d\n", tot - dinic());
+	printf("%d\n", dinic(1, n));
 	return 0;
 }

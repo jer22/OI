@@ -17,7 +17,7 @@ int d;
 
 bool dfs(int i) {
     visA[i] = 1;
-    for (int j = 1; j <= n * m; j++) {
+    for (int j = 1; j <= m; j++) {
         if (!visB[j]) {
             int t = edges[i][j] - A[i] - B[j];
             if (!t) {
