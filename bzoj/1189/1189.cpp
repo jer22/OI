@@ -1,22 +1,7 @@
-/****************************************
-
-
-这个代码是错的。
-我真是日了狗了。
-草草草草草草草草草草草草草草草草草草草草草草草草草草草草草草草
-TMD调了一万年，NMB我草老子真是服了
-
-
-****************************************/
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 
 #define INF 0x3f3f3f3f
-#define MAXN 3005
+#define MAXN 10005
 #define p(i, j) (((i) - 1) * m + (j))
 
 using namespace std;
@@ -113,16 +98,17 @@ bool vis[405];
 
 bool check(int x, int y) {
 	if (x < 1 || x > n || y < 1 || y > m) return false;
-	if (e[x][y] == 'X') return false;
+	if (e[x][y] != '.') return false;
 	return true;
 }
 
 void spfa(int s) {
-	++ndoor;
+	doors[++ndoor] = s;
+	memset(dist[s], 0x3f, sizeof(dist[s]));
 	memset(vis, 0, sizeof(vis));
 	queue<int> q;
 	q.push(s);
-	dist[ndoor][s] = 0;
+	dist[s][s] = 0;
 	vis[s] = 1;
 	while (!q.empty()) {
 		int cur = q.front();
@@ -132,8 +118,8 @@ void spfa(int s) {
 			int nx = x + dir[i][0], ny = y + dir[i][1];
 			if (!check(nx, ny)) continue;
 			int nex = p(nx, ny);
-			if (dist[ndoor][cur] + 1 < dist[ndoor][nex]) {
-				dist[ndoor][nex] = dist[ndoor][cur] + 1;
+			if (dist[s][cur] + 1 < dist[s][nex]) {
+				dist[s][nex] = dist[s][cur] + 1;
 				if (!vis[nex]) {
 					vis[nex] = 1;
 					q.push(nex);
@@ -147,55 +133,67 @@ void spfa(int s) {
 int tot = 0;
 void build_graph(int x) {
 	edges.clear();
-	for (int i = 0; i <= T; i++)
+	for (int i = 0; i < T; i++)
 		G[i].clear();
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
 			if (e[i][j] == '.') addEdge(S, p(i, j), 1);
-	for (int i = 1; i <= ndoor; i++)
-		addEdge(n * m + i + 1, T, x);
+	for (int i = 1; i <= ndoor; i++) {
+		for (int j = 1; j <= x; j++) {
+			addEdge(n * m + i * x + j, T, 1);
+		}
+	}
 	for (int i = 1; i <= ndoor; i++) {
 		for (int j = 1; j <= n; j++) {
 			for (int k = 1; k <= m; k++) {
 				if (e[j][k] != '.') continue;
-				if (dist[i][p(j, k)] <= x) {
-					addEdge(p(j, k), n * m + i + 1, x);
+				int cur = p(j, k);
+				int from = doors[i];
+				if (dist[from][cur] <= x) {
+					for (int l = dist[from][cur]; l <= x; l++) {
+						// if (x == 3) cout << cur << ' ' << from << ' ' << n * m + i * x + l << endl;
+						addEdge(cur, n * m + i * x + l, 1);
+					}
 				}
 			}
 		}
 	}
+	// if (x == 3) {
+	// 	for (int i = 0; i < T; i++) {
+	// 		for (int j = 0; j < G[i].size(); j++) {
+	// 			Edge e = edges[G[i][j]];
+	// 			if (e.cap > 0)
+	// 				cout << i << ' ' << e.to << ' ' << e.cap << endl;
+	// 		}
+	// 	}
+	// }
 }
 
 int solve() {
-	int ans = -1;
 	int l = 0, r = 400;
-	while (l <= r) {
+	while (l < r) {
 		int mid = l + r >> 1;
 		build_graph(mid);
-		if (dinic() == tot) {
-			ans = mid;
-			r = mid - 1;
-		}
+		if (dinic() == tot) r = mid;
 		else l = mid + 1;
 	}
-	return ans;
+	return l;
 }
 
 int main() {
-	freopen("1189.in", "r", stdin);
-	scanf("%d %d", &n, &m);
+	// freopen("1189.in", "r", stdin);
+	cin >> n >> m;
 	for (int i = 1; i <= n; i++)
-		scanf("%s", e[i] + 1);
-	S = 0, T = 3003;
-	memset(dist, 0x3f, sizeof(dist));
+		cin >> e[i] + 1;
+	S = 0, T = 10003;
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
 			if (e[i][j] == 'D') spfa(p(i, j));
 			else if (e[i][j] == '.') tot++;
 
 	int ans = solve();
-	if (ans == -1) printf("impossible\n");
-	else printf("%d\n", ans);;
+	if (ans >= 400) cout << "impossible" << endl;
+	else cout << ans << endl;
 
 	return 0;
 }
