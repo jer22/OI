@@ -180,5 +180,7 @@ int main() {
 		}
 	}
 
+	for (int i = 1; i <= tot; i++)
+		cout << dfsver[i] << ' ';
 	return 0;
 }
