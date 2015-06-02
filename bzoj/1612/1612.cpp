@@ -12,7 +12,6 @@ int n, m;
 bool map[MAXN][MAXN];
 int in[MAXN], out[MAXN];
 int main() {
-	freopen("1612.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	int a, b;
 	for (int i = 0; i < m; i++) {
