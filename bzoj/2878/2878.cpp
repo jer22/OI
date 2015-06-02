@@ -77,7 +77,6 @@ void dfsup(int x, int f, double ee) {
 }
 
 int main() {
-	freopen("2878.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	int a, b;
 	double c;
@@ -130,6 +129,5 @@ int main() {
 		ans += (up[i] * fa[i] + down[i] * son[i]) / (fa[i] + son[i]);
 	}
 	printf("%.5lf\n", ans / n);
-
 	return 0;
 }

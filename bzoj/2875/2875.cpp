@@ -39,7 +39,6 @@ inline matrix pow(matrix a, long long x) {
 }
 
 int main() {
-	freopen("2875.in", "r", stdin);
 	scanf("%lld %lld %lld %lld %lld %lld", &m, &a, &c, &x0, &n, &g);
 	origin = matrix(a, c);
 	origin = pow(origin, n);

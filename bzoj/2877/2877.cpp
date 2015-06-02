@@ -84,7 +84,6 @@ long long qux(int rx, int L, int R, int l1, int r1, int l2, int r2) {
 }
 
 int main() {
-	freopen("2877.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	scanf("%d %d", &sx, &sy);
 	scanf("%d", &q);
@@ -132,7 +131,5 @@ int main() {
                 d[p(sx, sy)] += c;
 		}
 	}
-
-
 	return 0;
 }
