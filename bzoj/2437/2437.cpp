@@ -29,7 +29,6 @@ bool dfs(int i) {
 
 int ans[10005];
 int main() {
-	freopen("2437.in", "r", stdin);
 	scanf("%d %d", &n, &m);
 	char str[45];
 	for (int i = 1; i <= n; i++) {
@@ -83,6 +82,5 @@ int main() {
 			printf("%d\n", i);
 		}
 	}
-
 	return 0;
 }
