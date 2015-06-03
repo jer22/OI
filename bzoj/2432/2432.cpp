@@ -88,7 +88,6 @@ void solve() {
 }
 
 int main() {
-	freopen("2432.in", "r", stdin);
 	scanf("%lld %lld %lld", &n, &m, &p);
 	fib[1] = fib[2] = 1;
 	for (int i = 3;; i++) {

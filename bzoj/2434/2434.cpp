@@ -118,7 +118,6 @@ void solve() {
 }
 
 int main() {
-	freopen("2434.in", "r", stdin);
 	scanf("%s", str);
 	
 	init_trie();
