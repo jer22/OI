@@ -16,30 +16,32 @@ struct Edge{
 	Edge(int a, int b) : to(a), v(b) {}
 };
 
+struct Node{
+	int v, dist;
+	Node() {}
+	Node(int a, int b) : v(a), dist(b) {}
+	bool operator < (const Node &n) const {
+		return dist > n.dist;
+	}
+};
+
 int n;
 vector<Edge> edges[250005];
 
 bool vis[250005];
 int dist[250005];
-int spfa() {
-	memset(dist, 0x7f, sizeof(dist));
-	queue<int> q;
-	q.push(0);
+priority_queue<Node> q;
+int dij() {
+	memset(dist, 0x3f, sizeof(dist));
 	dist[0] = 0;
-	vis[0] = 1;
+	q.push(Node(0, 0));
 	while (!q.empty()) {
-		int current = q.front();
+		Node cur = q.top();
 		q.pop();
-		vis[current] = 0;
-		for (int i = 0; i < edges[current].size(); i++) {
-			Edge e = edges[current][i];
-			if (dist[current] + e.v < dist[e.to]) {
-				dist[e.to] = dist[current] + e.v;
-				if (!vis[e.to]) {
-					vis[e.to] = 1;
-					q.push(e.to);
-				}
-			}
+		for (int i = 0; i < edges[cur.v].size(); i++) {
+			Edge e = edges[cur.v][i];
+			if (cur.dist + e.v < dist[e.to])
+				q.push(Node(e.to, dist[e.to] = cur.dist + e.v));
 		}
 	}
 	return dist[T];
@@ -97,7 +99,7 @@ int main() {
 		scanf("%d", &v);
 		edges[T].push_back(Edge(i * n, v));
 	}
-	int ans = spfa();
-	cout << ans << endl;
+	int ans = dij();
+	printf("%d\n", ans);
 	return 0;
 }
