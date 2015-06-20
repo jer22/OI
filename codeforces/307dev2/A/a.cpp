@@ -37,7 +37,6 @@ Node arr[2005];
 map<int, int> vis;
 int ans[2005];
 int main() {
-	// freopen("a.in", "r", stdin);
 	cin >> n;
 	for (int i = 1; i <= n; i++) {
 		cin >> arr[i].val;
@@ -56,9 +55,7 @@ int main() {
 			ans[arr[i].pos] = tot;
 		}
 	}
-	for (int i = 1; i <= n; i++) {
+	for (int i = 1; i <= n; i++)
 		cout << ans[i] << " \n"[i == n];
-	}
-
 	return 0;
 }

@@ -31,7 +31,6 @@ int cntb[30];
 int cntc[30];
 int temp[30];
 int main() {
-	// freopen("b.in", "r", stdin);
 	cin >> a >> b >> c;
 	int lena = strlen(a);
 	int lenb = strlen(b);
@@ -50,11 +49,9 @@ int main() {
 	int mx = 0;
 	int mxi = 0, mxj = 0;
 	for (int i = 0; i < lena; i++) {
-		// cout << i << endl;
 		int cc = 0x3f3f3f3f;
 		for (int j = 0; j < 26; j++) {
 			if (!cntc[j]) continue;
-			// cout << cntc[j] << endl;
 			int t = cnta[j] / cntc[j];
 			cc = min(cc, t);
 		}
@@ -66,7 +63,6 @@ int main() {
 		bool flag = false;
 		for (int k = 0; k < 26; k++) {
 			cnta[k] -= cntb[k];
-			// cout << cnta[i] << " \n"[k == 25];
 			if (cnta[k] < 0) {
 				flag = true;
 				break;

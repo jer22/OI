@@ -38,13 +38,11 @@ bool solve(long long mid) {
 		while (!temp[pos] && pos) pos--;
 		tot++;
 		long long tim = mid - pos;
-
 		if (tim <= 0 && temp[pos]) return false;
 		while (tim >= temp[pos] && pos) {
 			tim -= temp[pos];
 			temp[pos--] = 0;
 		}
-		// cout << pos << endl;
 		temp[pos] -= tim;
 		if (tot > m) return false;
 	}
@@ -52,7 +50,6 @@ bool solve(long long mid) {
 }
 
 int main() {
-	// freopen("c.in", "r", stdin);
 	cin >> n >> m;
 	for (int i = 1; i <= n; i++) {
 		cin >> arr[i];
@@ -64,7 +61,5 @@ int main() {
 		else l = mid + 1;
 	}
 	cout << l << endl;
-	// cout << solve(3);
-
 	return 0;
 }
