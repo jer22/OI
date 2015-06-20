@@ -108,7 +108,6 @@ int solve(int a, int b) {
 
 int T;
 int main() {
-	freopen("1003.in", "r", stdin);
 	scanf("%d", &T);
 	while (T--) {
 		scanf("%d %d", &n, &q);
@@ -143,7 +142,6 @@ int main() {
 			}
 		}
 	}
-
-	
 	return 0;
 }
+

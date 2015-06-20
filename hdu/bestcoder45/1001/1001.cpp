@@ -22,12 +22,10 @@ int solve() {
 }
 
 int main() {
-	freopen("1001.in", "r", stdin);
 	scanf("%d", &T);
 	while (T--) {
 		cin >> n;
 		printf("%d\n", solve());
 	}
-
 	return 0;
 }
