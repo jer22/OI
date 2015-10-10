@@ -31,16 +31,15 @@ void getSA() {
 		}
 		for (int i = 1; i >= 0; i--) {
 			memset(tmp, 0, sizeof(tmp));
-			for (int j = 0; j < n; j++) tmp[Count[j].c[i] + 1]++;
-			for (int j = 1; j < MAXN; j++) tmp[j] += tmp[j - 1];
-			for (int j = n - 1; j >= 0; j--) Count_b[--tmp[Count[j].c[i] + 1]] = Count[j];
-			for (int j = 0; j < n; j++) Count[j] = Count_b[j];
+			for (int k = 0; k < n; k++) tmp[Count[k].c[i] + 1]++;
+			for (int k = 1; k < MAXN; k++) tmp[k] += tmp[k - 1];
+			for (int k = n - 1; k >= 0; k--) Count_b[--tmp[Count[k].c[i] + 1]] = Count[k];
+			for (int k = 0; k < n; k++) Count[k] = Count_b[k];
 		}
 		rank[Count[0].id] = 0;
 		for (int i = 1; i < n; i++) {
 			rank[Count[i].id] = rank[Count[i - 1].id];
-			if (Count[i].c[0] != Count[i - 1].c[0] || Count[i].c[1] != Count[i - 1].c[1])
-				rank[Count[i].id]++;
+			if (Count[i].c[0] != Count[i - 1].c[0] || Count[i].c[1] != Count[i - 1].c[1]) rank[Count[i].id]++;
 		}
 		j++;
 	}
@@ -52,11 +51,12 @@ void getHeight() {
 	for (int i = 0; i < n; height[rank[i++]] = k) {
 		if (!rank[i]) k = 0;
 		else {
-			for (k ? k-- : 0, j = sa[rank[i] - 1]; arr[i + k] == arr[j + k]; k++)
+			for (k ? k-- : 0, j = sa[rank[i] - 1]; arr[i + k] == arr[j + k]; k++) {
 				if (i + k == n - 1 || j + k == n - 1) {
 					k++;
 					break;
 				}
+			}
 		}
 	}
 }
@@ -90,20 +90,14 @@ int main() {
 		getHeight();
 		int l = 0, r = n;
 		while (l < r) {
-			if (r == l + 1) {
-				if (calc(r)) l = r;
-				else r = l;
-			}
-			else {
-				int mid = l + r >> 1;
-				if (calc(mid)) l = mid;
-				else r = mid;
-			}
+			int mid = (l + r >> 1) + 1;
+			if (calc(mid)) l = mid;
+			else r = mid - 1;
 		}
 		if (l > 3) cout << l + 1 << endl;
 		else cout << 0 << endl;
 	}
-
+	
 
 	return 0;
 }
