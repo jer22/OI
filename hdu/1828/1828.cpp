@@ -71,6 +71,7 @@ int main() {
 	// freopen("picture.out", "w", stdout);
 	while (~scanf("%d", &n)) {
 		memset(cnt, 0, sizeof(cnt));
+		ans = 0;
 		int x1, y1, x2, y2;
 		int mh = 0, mv = 0;
 		for (int i = 0; i < n; i++) {
