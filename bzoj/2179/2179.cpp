@@ -54,6 +54,8 @@ int main() {
 	for (int i = 0; i < n; i++) a[i] *= b[i];
 	fft(a, -1);
 	for (int i = 0; i <= m; i++) c[i] = (int)(a[i].real() + 0.1);
+	for (int i = 0; i <= m; i++)
+		cout << i << ' ' << c[i] << endl;
 	for (int i = 0; i <= m; i++) {
 		if (c[i] >= 10) {
 			c[i + 1] += c[i] / 10;
