@@ -1,0 +1,21 @@
+2
+5
+1 2 3 4 5
+1 5
+5
+MoveLeft R
+Insert R 6
+Reverse
+Delete R
+Insert L 7
+5
+6536 5207 2609 6604 -4046
+1 3
+5
+Delete L
+Insert R -9221
+Reverse
+Delete L
+MoveRight L
+
+ 
