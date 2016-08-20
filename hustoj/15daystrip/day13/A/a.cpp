@@ -44,6 +44,8 @@ int main() {
 	scanf("%s", b);
 	cnt = last = 1;
 	build(a);
+
+
 	int now = 1;
 	int ans = 0, temp = 0;
 	for (int i = 0; i < strlen(b); i++) {
