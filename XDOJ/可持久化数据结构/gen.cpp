@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int MAXN = 100005;
+const int MAXN = 1000005;
 
 int n, q;
 vector<pair<int, int> > c[MAXN];
@@ -51,7 +51,7 @@ int getsum(int pos, int tim) {
 int main() {
 	srand(time(0));
 	freopen("input.txt", "w", stdout);
-	n = 100000, q = 100000;
+	n = 1000000, q = 100000;
 	printf("%d %d\n", n, q);
 	int a, b, x, t;
 	for (int i = 0; i < q; i++) {

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int MAXN = 100005;
+const int MAXN = 1000005;
 
 int n, q;
 vector<pair<int, int> > c[MAXN];
