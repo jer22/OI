@@ -39,7 +39,8 @@ int getsum(int pos) {
 }
 
 int main() {
-	freopen("1818.inin", "r", stdin);
+	freopen("1818.in", "r", stdin);
+	freopen("1818.inin", "w", stdout);
 	scanf("%d", &n);
 	for (int i = 1; i <= n; i++) {
 		scanf("%d %d", &p[i].x, &p[i].y);
@@ -53,31 +54,13 @@ int main() {
 
 	for (int i = 1; i <= n; i++) {
 		p[i].x = get(p[i].x), p[i].y = get(p[i].y);
-
-		lef[p[i].y] = min(lef[p[i].y], p[i].x);
-		rig[p[i].y] = max(rig[p[i].y], p[i].x);
 	}
+	cout << n << endl;
 	sort(p + 1, p + n + 1);
 	for (int i = 1; i <= n; i++) {
-		if (lef[p[i].y] == rig[p[i].y]) p[i].pos = 2;
-		else if (lef[p[i].y] == p[i].x) p[i].pos = 1;
-		else if (rig[p[i].y] == p[i].x) p[i].pos = -1;
-		else p[i].pos = 0;
+		cout << p[i].x << ' ' << p[i].y << endl;
 	}
-	int ans = n;
-	for (int i = 1; i <= n; ) {
-		int rr = i;
-		while (rr < n && p[i].x == p[rr + 1].x) rr++;
-		// cout << i << ' ' << rr << endl;
-		for (int j = i; j <= rr; j++) {
-			if (p[j].pos == -1 || p[j].pos == 0) insert(p[j].y, -1);
-		}
-		ans += max(0, getsum(p[rr].y - 1) - getsum(p[i].y));
-		for (; i <= rr; i++) {
-			if (p[i].pos == 1 || p[i].pos == 0) insert(p[i].y, 1);
-		}
-	}
-	printf("%d\n", ans);
+
 
 	return 0;
 }
