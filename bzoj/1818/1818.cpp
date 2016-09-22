@@ -19,7 +19,7 @@ Point p[MAXN];
 int t[MAXN << 1], tot = 0;
 int lef[MAXN << 1], rig[MAXN << 1];
 
-int get(int x) {
+int gethash(int x) {
 	return lower_bound(t + 1, t + tot + 1, x) - t;
 }
 
@@ -47,12 +47,12 @@ int main() {
 		t[++tot] = p[i].y;
 	}
 	sort(t + 1, t + tot + 1);
-	tot = unique(t + 1, t + tot + 1) - t - 1;
+	tot = unique(t + 1, t + tot + 1) - t - 1;//hash
 
 	memset(lef, 0x3f, sizeof(lef));
 
 	for (int i = 1; i <= n; i++) {
-		p[i].x = get(p[i].x), p[i].y = get(p[i].y);
+		p[i].x = gethash(p[i].x), p[i].y = get(p[i].y);
 
 		lef[p[i].y] = min(lef[p[i].y], p[i].x);
 		rig[p[i].y] = max(rig[p[i].y], p[i].x);
