@@ -24,6 +24,7 @@ void init() {
 		for (int j = 0; j < 2000; j++) {
 			sum[i + 1][j + 2] = min(sum[i + 1][j + 2], short(sum[i][j] + 1));
 			sum[i + 2][j + 1] = min(sum[i + 2][j + 1], short(sum[i][j] + 1));
+			// if (i <= 10 && j <= 10) cout << i << ' ' << j << ' ' << (i + j) / 3 << ' ' << sum[i][j] << endl;
 		}
 	}
 }
@@ -51,11 +52,14 @@ int main() {
 			int pre = 0;
 			for (int j = 0; j <= arr[i]; j++) {
 				for (int k = pre; k <= arr[i - 1]; k++) {
-					int nw = dp[(i + 1) & 1][k] + sum[k][arr[i] - j];
-					if (nw < dp[i & 1][j]) {
-						dp[i & 1][j] = nw;
-						pre = k;
-					}
+					// if (!((j + k) % 3) && j >= k / 2 && j <= k * 2) {
+						int nw = dp[(i + 1) & 1][k] + sum[k][j];
+						if (nw < dp[i & 1][arr[i] - j]) {
+							dp[i & 1][arr[i] - j] = nw;
+							pre = k;
+						}
+						
+					// }
 				}
 			}
 		}
