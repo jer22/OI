@@ -13,7 +13,7 @@ long long pre[22];
 long long aft[22];
 
 int main() {
-	freopen("5938.in", "r", stdin);
+	// freopen("5938.in", "r", stdin);
 	scanf("%d", &T);
 	for (int cas = 1; cas <= T; cas++) {
 		scanf("%s", str + 1);
