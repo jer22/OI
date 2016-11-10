@@ -46,23 +46,24 @@ int main() {
 		}
 		for (int i = 0; i <= arr[1]; i++)
 			dp[1][i] = sum[arr[1] - i][0];
-		for (int i = 2; i <= m; i++) {
-			for (int j = 0; j <= arr[i]; j++)
-				dp[i & 1][j] = 0x3f3f3f3f;
+		for (int i = 1; i < m; i++) {
+			memset(dp[(i + 1) & 1], 0x3f, sizeof(dp[0]));
 			int pre = 0;
 			for (int j = 0; j <= arr[i]; j++) {
-				for (int k = pre; k <= arr[i - 1]; k++) {
-					// if (!((j + k) % 3) && j >= k / 2 && j <= k * 2) {
-						int nw = dp[(i + 1) & 1][k] + sum[k][j];
-						if (nw < dp[i & 1][arr[i] - j]) {
-							dp[i & 1][arr[i] - j] = nw;
-							pre = k;
-						}
-						
-					// }
+				/*
+				dp[i][arr[i]-j]
+				arr[i]-j = u*2+v 	v=arr[i]-j-u*2
+				k = v*2+u         k=arr[i]*2-j*2-u*3
+				*/
+				for (int u = 0; u * 2 <= j; u++) {
+					int v = j-u*2;
+					int k = v*2+u;
+					dp[(i + 1) & 1][max(0, arr[i + 1]-k)]
+						= min(dp[(i + 1) & 1][max(0, arr[i + 1]-k)], dp[i & 1][j] + u+v);
 				}
 			}
 		}
+		// cout << dp[0][]
 		printf("Case #%d: %d\n", cas, dp[m & 1][0]);
 	}
 
