@@ -139,7 +139,7 @@ void solve(){
 int main()
 {
     freopen("5967.in","r",stdin);
-    // freopen("std.out", "w", stdout);
+    freopen("std.out", "w", stdout);
     solve();
     return 0;
 }

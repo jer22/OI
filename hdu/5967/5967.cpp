@@ -70,10 +70,14 @@ void splay(int x) {
 		rotate(x);
 	}
 }
-int access(int x) {
+int access(int x, int tok = 0) {
 	int tt = x;
 	for (int t = 0; x; t = x, x = fa[x]) {
 		splay(x), tr[x][1] = t;
+		// if (tok == 100) cout << x << ' ' << fa[x] << ' ';
+		if (tok == 111) {
+			// cout << tr[0][1] << '*';
+		}
 		tt = x;
 		// pushup(x);
 	}
@@ -88,9 +92,10 @@ int access(int x) {
 // 	makeroot(x);
 // 	fa[x] = y;
 // }
-int find(int x) {
-	access(x);
+int find(int x, int tok = 0) {
+	access(x, tok);
 	splay(x);
+	// if (tok == 111) cout << fa[3] << "=\n";
 	while (tr[x][0]) x = tr[x][0];
 	return x;
 }
@@ -101,7 +106,7 @@ void deb() {
 void cut(int y, int i = 0) {
 	// makeroot(x);
 	// access(y);
-	cout << i << ' ' << 2 << ' ' << find(2) << endl;
+	// cout << i << ' ' << 2 << ' ' << find(2) << endl;
 	splay(y);
 	if (loop[y]) {
 		loop[y] = 0;
@@ -136,28 +141,43 @@ void conn(int x, int y, int i = 0) {
 
 	if (!y) {
 		// makeroot(x);
-		loop[x] = y;
+		loop[x] = 0;
 		fa[x] = 0;
 		return;
 	}
+	int a = find(x);
+	int b = find(y);
 	// cout << x << endl;
-	if (find(x) == find(y)) {
+	if (a == b) {
+
+		// if (x == 8 && y == 9) cout << i << endl;
 		// cout << x << ' ' <<  y << ' ' << find(8) << ' ' <<find(9) << endl;
 		// cov(x, y, 1);
 
-		loop[x] = y;
+		loop[a] = y;
 		parent[x] = 0;
 	} else {
 		loop[x] = 0;
 		access(x);
 		splay(x);
 		fa[x] = y;
-		if (x == 8 && y == 9) {
-			cout << "==========" << i << endl;
-			access(5);
-			// cout << fa[2] << endl;
-			// deb();
-		}
+		access(b);
+		// if (x == 9 && y == 2) {
+		// 	// splay(2);
+		// 	// cout << fa[2] << "*"<<endl;
+		// 	// cout << find(3, 111)<<"*";
+		// 	// cout << fa[8] << "*";
+		// 	access(9);
+		// 	// cout << fa[6];
+		// 	cout << access(8)<<"*";
+		// }
+
+		// if (x == 8 && y == 9) {
+		// 	cout << "==========" << i << endl;
+		// 	access(5);
+		// 	// cout << fa[2] << endl;
+		// 	// deb();
+		// }
 		// link(x, y);
 	}
 }
@@ -169,7 +189,7 @@ int query(int x) {
 
 int main() {
 	freopen("5967.in", "r", stdin);
-	// freopen("ans.out", "w", stdout);
+	freopen("ans.out", "w", stdout);
 	scanf("%d %d", &n, &m);
 	// for (int i = 1; i <= n; i++)
 	// 	cover[i] = -1;
@@ -198,7 +218,6 @@ int main() {
 				if (t == a) {
 					conn(a, b);
 				} else {
-					// cout << a << ' '<<b <<"===\n";
 					cut(a, i);
 					conn(t, loop[t], i);
 					conn(a, b);
@@ -207,7 +226,12 @@ int main() {
 				// loop[t] = 0;
 			} else {
 				if (t == a) {
-					conn(a, b);
+					// cout << a << ' '<<b <<"===\n";
+					conn(a, b, i);
+					// access(2, 100);
+					// splay(2);
+					// cout << tr[8][1] << endl;
+					// cout << access(2) << "**"<<endl;
 				} else {
 					cut(a, i);
 					conn(a, b);
