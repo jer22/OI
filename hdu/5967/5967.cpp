@@ -14,26 +14,7 @@ int rev[MAXN], cover[MAXN];
 int tr[MAXN][2], fa[MAXN];
 int q[MAXN], top = 0;
 int val[MAXN], loop[MAXN];
-// vector<int> edges[MAXN];
 
-// void pushup(int x) {
-// 	int l = tr[x][0], r = tr[x][1];
-// 	// mx[x] = max(max(mx[l], mx[r]), val[x]);
-// }
-// void pushdown(int x) {
-// 	int l = tr[x][0], r = tr[x][1];
-// 	if (rev[x]) {
-// 		rev[x] ^= 1;
-// 		rev[l] ^= 1;
-// 		rev[r] ^= 1;
-// 		swap(tr[x][0], tr[x][1]);
-// 	}
-// 	if (cover[x] != -1) {
-// 		val[l] = cover[x];
-// 		val[r] = cover[x];
-// 		cover[x] = -1;
-// 	}
-// }
 bool isroot(int x) {
 	return tr[fa[x]][0] != x && tr[fa[x]][1] != x;
 }
@@ -52,15 +33,8 @@ void rotate(int x) {
 	fa[tr[x][r]] = y;
 	tr[y][l] = tr[x][r];
 	tr[x][r] = y;
-	// pushup(y);
-	// pushup(x);
 }
 void splay(int x) {
-	// top = 0;
-	// q[++top] = x;
-	// for (int i = x; !isroot(i); i = fa[i])
-	// 	q[++top] = fa[i];
-	// while (top) pushdown(q[top--]);
 	while (!isroot(x)) {
 		int y = fa[x], z = fa[y];
 		if (!isroot(y)) {
@@ -70,90 +44,47 @@ void splay(int x) {
 		rotate(x);
 	}
 }
-int access(int x, int tok = 0) {
+int access(int x) {
 	int tt = x;
 	for (int t = 0; x; t = x, x = fa[x]) {
 		splay(x), tr[x][1] = t;
-		// if (tok == 100) cout << x << ' ' << fa[x] << ' ';
-		if (tok == 111) {
-			// cout << tr[0][1] << '*';
-		}
 		tt = x;
-		// pushup(x);
 	}
 	return tt;
 }
-// void makeroot(int x) {
-// 	access(x);
-// 	splay(x);
-// 	rev[x] ^= 1;
-// }
-// void link(int x, int y) {
-// 	makeroot(x);
-// 	fa[x] = y;
-// }
-int find(int x, int tok = 0) {
-	access(x, tok);
+int find(int x) {
+	access(x);
 	splay(x);
-	// if (tok == 111) cout << fa[3] << "=\n";
 	while (tr[x][0]) x = tr[x][0];
 	return x;
 }
-void deb() {
-	for (int i = 1; i <= n; i++)
-		cout << find(i) << " \n"[i == n];
-}
-void cut(int y, int i = 0) {
-	// makeroot(x);
-	// access(y);
-	// cout << i << ' ' << 2 << ' ' << find(2) << endl;
+void cut(int y) {
 	splay(y);
 	if (loop[y]) {
 		loop[y] = 0;
 		return;
 	}
-	// pushup(y);
 	int t = tr[y][0];
 	if (t) while (tr[t][1]) t = tr[t][1];
 	else t = fa[y];
 	if (!t) return;
 	access(t);
 	splay(y);
-	// access(y);
-	// splay(y);
-	// if (y) find(y);
 
 	fa[y] = 0;
-	if (y == 9) {
-		// deb();
-	}
 }
-// void cov(int x, int y, int v) {
-// 	makeroot(x);
-// 	access(y);
-// 	splay(y);
-// 	cover[y] = v;
-// 	val[y] = v;
-// }
 int parent[MAXN];
-void conn(int x, int y, int i = 0) {
+void conn(int x, int y) {
 	parent[x] = y;
 
 	if (!y) {
-		// makeroot(x);
 		loop[x] = 0;
 		fa[x] = 0;
 		return;
 	}
 	int a = find(x);
 	int b = find(y);
-	// cout << x << endl;
 	if (a == b) {
-
-		// if (x == 8 && y == 9) cout << i << endl;
-		// cout << x << ' ' <<  y << ' ' << find(8) << ' ' <<find(9) << endl;
-		// cov(x, y, 1);
-
 		loop[a] = y;
 		parent[x] = 0;
 	} else {
@@ -162,50 +93,23 @@ void conn(int x, int y, int i = 0) {
 		splay(x);
 		fa[x] = y;
 		access(b);
-		// if (x == 9 && y == 2) {
-		// 	// splay(2);
-		// 	// cout << fa[2] << "*"<<endl;
-		// 	// cout << find(3, 111)<<"*";
-		// 	// cout << fa[8] << "*";
-		// 	access(9);
-		// 	// cout << fa[6];
-		// 	cout << access(8)<<"*";
-		// }
-
-		// if (x == 8 && y == 9) {
-		// 	cout << "==========" << i << endl;
-		// 	access(5);
-		// 	// cout << fa[2] << endl;
-		// 	// deb();
-		// }
-		// link(x, y);
 	}
 }
 int query(int x) {
-	// access(x);
-	// splay(x);
 	return val[x];
 }
 
 int main() {
-	freopen("5967.in", "r", stdin);
-	freopen("ans.out", "w", stdout);
 	scanf("%d %d", &n, &m);
-	// for (int i = 1; i <= n; i++)
-	// 	cover[i] = -1;
 	for (int i = 1; i <= n; i++) {
 		scanf("%d", &parent[i]);
-		if (!parent[i]) {
-			// makeroot(i);
+		if (!parent[i]) continue;
+		if (find(parent[i]) != find(i)) {
+			fa[i] = parent[i];
 		} else {
-			if (find(parent[i]) != find(i)) {
-				fa[i] = parent[i];
-				// link(i, parent[i]);
-			} else {
-				loop[i] = parent[i];
-				parent[i] = 0;
-			}		
-		}
+			loop[i] = parent[i];
+			parent[i] = 0;
+		}		
 	}
 
 	int op, a, b;
@@ -218,33 +122,24 @@ int main() {
 				if (t == a) {
 					conn(a, b);
 				} else {
-					cut(a, i);
-					conn(t, loop[t], i);
+					cut(a);
+					conn(t, loop[t]);
 					conn(a, b);
-
 				}
-				// loop[t] = 0;
 			} else {
 				if (t == a) {
-					// cout << a << ' '<<b <<"===\n";
-					conn(a, b, i);
-					// access(2, 100);
-					// splay(2);
-					// cout << tr[8][1] << endl;
-					// cout << access(2) << "**"<<endl;
+					conn(a, b);
 				} else {
-					cut(a, i);
+					cut(a);
 					conn(a, b);
 				}
 			}
 		} else {
 			scanf("%d", &a);
 			int rt = find(a);
-			// if (a == 9) cout << rt << "ffffff" << endl;
 			if (loop[rt]) printf("-1\n");
 			else printf("%d\n", rt);
 		}
 	}
-
 	return 0;
 }
