@@ -1,114 +1,73 @@
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
-#include <map>
+#include <algorithm>
+#include <iostream>
+#include <vector>
 #include <queue>
+#include <map>
+
 using namespace std;
 
-struct edge
-{
-	int v, w, next; 
-} e[10005];
+const int INF = 0x3f3f3f3f;
 
-struct query
-{
-	unsigned char u, s1, s2;
-}q[3000005];
+struct Edge{
+	int to, v;
+	Edge() {}
+	Edge(int a, int b) : to(a), v(b) {}
+};
 
-int n, m, k, cnt, T, ans, head[105], dp[51][256][256], 
-    fast[105][105], a[105], b[105], bin[105];
-
-bool vis[51][256][256];
-
-void insert(int u, int v, int w) {
-	e[cnt] = (edge) {v, w, head[u]}, head[u] = cnt++;
-}
-
-int main()
-{
-	freopen("sample.in", "r", stdin);
-
+int T, n, m, K;
+vector<Edge> edges[52];
+int dist[52][52];
+int pos[10], tim[10], ftim[10], cnt[10];
+vector<int> pass[10];
+int dp[55][260][260];
+int main() {
+	freopen("d.in", "r", stdin);
 	scanf("%d", &T);
-
 	while (T--) {
-		scanf("%d%d%d", &n, &m, &k);	
-
-		cnt = 0, ans = -1;
-
-		memset(vis, 0, sizeof vis);
-		memset(dp, -1, sizeof dp);
-		memset(head, -1, sizeof head);
-		memset(bin, 0, sizeof bin);
-		memset(fast, 0, sizeof fast);		
-
-		for (int i = 1; i <= m; i++) {
-			int u, v, w;
-			scanf("%d%d%d", &u, &v, &w);
-			insert(u, v, w);
-			insert(v, u, w);
+		scanf("%d %d %d", &n, &m, &K);
+		for (int i = 1; i <= n; i++)
+			edges[i].clear();
+		int a, b, c;
+		memset(dist, 0x3f, sizeof(dist));
+		for (int i = 0; i < m; i++) {
+			scanf("%d %d %d", &a, &b, &c);
+			edges[a].push_back(Edge(b, c));
+			edges[b].push_back(Edge(a, c));
+			dist[a][b] = dist[b][a] = c;
 		}
-	
-		for (int i = 0; i < k; i++) {
-			int s; scanf("%d", &s);
-			bin[s] = (1 << i);
-			scanf("%d%d", &a[s], &b[s]);
+		for (int k = 1; k <= n; k++)
+			for (int i = 1; i <= n; i++)
+				for (int j = 1; j <= n; j++)
+					dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
 
-			int t; scanf("%d", &t);
-			for (int j = 1; j <= t; j++) {
-				int v; scanf("%d", &v);
-				fast[v][i] = 1;
+		int x;
+		for (int i = 0; i < K; i++) {
+			pass[i].clear();
+			scanf("%d %d %d %d", &pos[i], &tim[i], &ftim[i], &cnt[i]);
+			for (int t = 0; t < cnt[i]; t++) {
+				scanf("%d", &x);
+				pass[i].push_back(x);
 			}
 		}
-
-		int lift = 0, right = 1;
-
-		insert(0, 1, 0), dp[0][0][0] = 0;
-		q[lift] = (query) {0, 0, 0};
-
-		while (lift != right) {
-			query th = q[lift++];
-			if (lift == 3000000)
-				lift = 0;
-
-			int u = th.u, s1 = th.s1, s2 = th.s2;
-			vis[u][s1][s2] = 0;
-
-			for (int i = head[u]; i != -1; i = e[i].next) {
-				int v = e[i].v, t1 = s1, t2 = (s2 | bin[v]);
-
-				for (int j = 0; j < k; j++)
-					t1 |= fast[v][j] * (1 << j);
-
-				if (dp[v][t1][s2] == -1 || dp[v][t1][s2] > dp[u][s1][s2] + e[i].w) {
-					dp[v][t1][s2] = dp[u][s1][s2] + e[i].w;
-					if (!vis[v][t1][s2]) {
-						vis[v][t1][s2] = 1;
-						q[right++] = (query) {v, t1, s2};
-						if (right == 3000000)
-							right = 0;
-					}
-				}
-
-				int tmp = dp[u][s1][s2] + e[i].w + ((bin[v] & t1) ? b[v] : a[v]);
-
-				if (t2 != s2 && (dp[v][t1][t2] == -1 || dp[v][t1][t2] > tmp)) {
-					dp[v][t1][t2] = tmp;
-					if (!vis[v][t1][t2]) {
-						vis[v][t1][t2] = 1;
-						q[right++] = (query) {v, t1, t2};
-						if (right == 3000000)
-							right = 0;
+		dp[1][0] = 0;
+		for (int j = 0; j < 1 << K; j++) {
+			for (int i = 1; i <= n; i++) {
+				if (dp[i][j] == INF) continue;
+				for (int nex = 0; nex < K; nex++) {
+					if (j & (1 << nex)) continue;
+					int nexstat = j & (1 << nex);
+					int nexpos = pos[nex];
+					dp[nexpos][nexstat] = min(dp[nexpos][nexstat], dp[i][j] + dist[i][nexpos] + tim[nex]);
+					for (int t = 0; t < pass[nex]; t++) {
+						dp[nexpos][nexstat] = min(dp[nexpos][nexstat], dp[i][j] + dist[i][t] + dist[])
 					}
 				}
 			}
 		}
-
-		for (int i = 0; i < (1 << k); i++)
-			if (dp[1][i][(1 << k) - 1] != -1 && (ans == -1 || ans > dp[1][i][(1 << k) - 1]))
-				ans = dp[1][i][(1 << k) - 1];
-
-		printf("%d\n", ans);
 	}
 
+
 	return 0;
-}	
+}
